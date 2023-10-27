@@ -22,11 +22,13 @@
   color: #FFC700;
   font-size: 32px;
   font-family: 'futureFont';
+  text-transform: uppercase;
 }
 .level, .currentTeam, .currentBalance {
   color: #ffffff;
   font-size: 32px;
   font-family: 'tickingBomb';
+  text-decoration: none;
 }
 .line{
   width: 52px;

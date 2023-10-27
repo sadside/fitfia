@@ -1,13 +1,11 @@
 import axios from 'axios';
 
-// import {apiVersion} from './BackendSettings';
 import {getToken} from './Cookie';
+import {LoginData, RegisterData, Token} from 'src/entities/User/userModel.ts';
 
 const createApiCall: (restPath: string) => string = (restPath: string) => {
     return `http://95.163.182.127:8080/api/v1${restPath}`;
 };
-
-// http://95.163.182.127:8080/api/v1/auth/register
 
 const getUserTokenHeader = () => {
     const token = getToken();
@@ -51,13 +49,13 @@ export const validateToken = () =>
 export const saveUserData = (data: string) =>
     axios.post(createApiCall('/user/info/edit'), data, getUserTokenHeader());
 
-export const login = (data: string) =>
+export const login = (data: LoginData) =>
     axios.post(createApiCall('/auth/login'), data, getJSONHeader());
 
-export const registerUser = (data: string) =>
+export const registerUser = (data: RegisterData) =>
     axios.post(createApiCall('/auth/register'), data, getJSONHeader());
 
-export const confirmEmail = (data: string) =>
+export const confirmEmail = (data: Token) =>
     axios.post(createApiCall('/auth/confirm'), data, getJSONHeader());
 
 export const resendConfirmationCode = (data: string) =>

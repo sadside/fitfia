@@ -1,4 +1,6 @@
-type User = {
+import {FormValues} from 'src/pages/RegisterPage/ui/RegisterPage.tsx';
+
+export type User = {
     content: {
         achievements: {
             description: string;
@@ -14,4 +16,15 @@ type User = {
             username: string;
         };
     };
+};
+
+export type RegisterData = Omit<FormValues, 'token'>;
+
+export type Token = {
+    token: string;
+};
+
+export type LoginData = {
+    email: string;
+    password: string;
 };

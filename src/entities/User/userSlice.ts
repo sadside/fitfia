@@ -1,43 +1,81 @@
-import {createAsyncThunk} from '@reduxjs/toolkit';
-import {registerUser} from 'src/shared/api/ApiCalls.ts';
+import {PayloadAction} from '@reduxjs/toolkit';
 import {createSlice} from '@reduxjs/toolkit';
 import {toast} from 'react-toastify';
+import {User} from './userModel.ts';
+import {deleteToken, saveToken} from 'src/shared/api/Cookie.ts';
+import {
+    confirmEmailThunk,
+    getUserInfoThunk,
+    loginThunk,
+    registerThunk,
+} from './userThunks.ts';
 
 type initialState = {
     user: User | null;
+    isAuth: boolean;
     showCodeInput: boolean;
+    status: string;
 };
 
 const initialState: initialState = {
     user: null,
-    showCodeInput: true,
+    isAuth: false,
+    showCodeInput: false,
+    status: 'loading user info',
 };
-
-export const registration = createAsyncThunk(
-    'user/register',
-    async (data: any, {}) => {
-        return registerUser(data);
-    }
-);
 
 const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        setShowCodeInput: (state, action) => {
+        setShowCodeInput: (state, action: PayloadAction<boolean>) => {
             state.showCodeInput = action.payload;
+        },
+        setStatus: (state, action: PayloadAction<string>) => {
+            state.status = action.payload;
+            deleteToken();
         },
     },
     extraReducers: builder => {
-        builder.addCase(registration.fulfilled, state => {
+        builder.addCase(registerThunk.fulfilled, (state, _) => {
             state.showCodeInput = true;
             toast('На твою почту отправлен код!');
         });
-        builder.addCase(registration.rejected, () => {
-            console.log('error');
+        builder.addCase(registerThunk.rejected, (_, action) => {
+            toast.error(action.payload);
+        });
+        builder.addCase(confirmEmailThunk.fulfilled, (state, action) => {
+            saveToken(action.payload.token);
+            state.isAuth = true;
+            toast('Ты в игре!');
+        });
+        builder.addCase(confirmEmailThunk.rejected, (_, action) => {
+            toast.error(action.payload);
+        });
+        builder.addCase(loginThunk.fulfilled, state => {
+            toast('Ты в игре!');
+            // saveToken(action.payload.token);
+            state.status = 'idle';
+            state.isAuth = true;
+        });
+        builder.addCase(loginThunk.rejected, (_, action) => {
+            toast.error(action.payload);
+        });
+        builder.addCase(getUserInfoThunk.pending, state => {
+            state.status = 'loading user info';
+        });
+        builder.addCase(getUserInfoThunk.fulfilled, (state, action) => {
+            state.status = 'idle';
+            state.user = action.payload;
+            state.isAuth = true;
+        });
+        builder.addCase(getUserInfoThunk.rejected, (state, action) => {
+            state.isAuth = false;
+            state.status = 'idle';
+            toast.error(action.payload);
         });
     },
 });
 
-export const {setShowCodeInput} = userSlice.actions;
+export const {setShowCodeInput, setStatus} = userSlice.actions;
 export default userSlice.reducer;
