@@ -1,0 +1,49 @@
+
+.light{
+  background: none;
+  color: #FFC700;
+  text-shadow: 0 0 20px #FFC700;
+}
+.regText{
+  color: #ffffff;
+}
+.fullProfile{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.ava{
+  width: 141px;
+  height: 141px;
+  border-radius: 11px;
+  border:rgb(255, 255, 255) solid 3px;
+}
+.nick, .team, .balance {
+  color: #FFC700;
+  font-size: 32px;
+  font-family: 'futureFont';
+}
+.level, .currentTeam, .currentBalance {
+  color: #ffffff;
+  font-size: 32px;
+  font-family: 'tickingBomb';
+}
+.line{
+  width: 52px;
+  height: 3px;
+  background-color: #ffffff;
+}
+.profileItem{
+  margin: 0 3% 0;
+}
+.withoutDickPick{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.dickPick{
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+}

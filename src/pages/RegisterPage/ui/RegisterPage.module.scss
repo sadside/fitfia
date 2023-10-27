@@ -1,0 +1,101 @@
+.wrapper {
+  margin: 40px;
+}
+.light{
+  background-color: none;
+  color: #FFC700;
+  text-shadow: 0 0 20px #FFC700;
+  font-family: 'pixy';
+}
+.authText {
+  color: #ffffff;
+  font-family: 'pixy';
+  font-size: 64px;
+  line-height: 70px;
+}
+.authLine {
+  margin-right: 2%;
+  width: 5px;
+  height: 192px;
+  background: #ffffff;
+}
+.authHeader{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.authLoginSquare{
+  font-family: 'futureFont';
+  font-size: 48px;
+  margin-left: 5%;
+  width: 394px;
+  height: 55px;
+}
+.authLogin, .authPassword{
+  height: 61px;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  flex-direction:row;
+  overflow: hidden;
+}
+.authLoginPassword{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.authLoginButton{
+  width: 50px;
+  height: 50px;
+  margin: 3%;
+  font-size: 20px;
+  font-weight: 100;
+  text-align: center;
+}
+.authLoginButton:hover{
+  background-color: rgba(255, 199 , 0, 0.5);
+  font-size: 40px;
+  font-weight: 1000;
+}
+.authFullLogin{
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  display: flex;
+  align-items: center;
+}
+.authRegText{
+  color: #ffffff;
+  font-size: 42px;
+  font-family: 'tickingBomb';
+}
+.authLoginSquare{
+  font-family: 'pixy', serif;
+  color:#ffffff;
+  font-size: 48px;
+  width: 394px;
+  padding: 10px;
+  height: 55px;
+  border-radius: 11px;
+  border:rgb(255, 255, 255) solid 3px;
+  background-color: rgba(255, 199 , 0, 0.1);
+}
+.authLoginButton{
+  width: 100px;
+  height: 70px;
+  margin-left: 50px;
+  border-radius: 11px;
+  border:rgb(255, 255, 255) solid 3px;
+  background-color: rgba(255, 199 , 0, 0.1);
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 100;
+  text-align: center;
+}
+
+.authLoginButton:hover{
+  background-color: rgba(255, 199 , 0, 0.5);
+  color: #ffffff;
+  font-size: 40px;
+  font-weight: 1000;
+}

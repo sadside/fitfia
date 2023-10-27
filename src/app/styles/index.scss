@@ -1,0 +1,36 @@
+@import "reset";
+
+@font-face {
+  font-family: 'tickingBomb';
+  src: url('/src/shared/assets/fonts/TickingTimebombBb.ttf');
+}
+
+@font-face {
+  font-family: 'futureFont';
+  src: url('/src/shared/assets/fonts/mikratos.ttf');
+}
+@font-face {
+  font-family: 'pixy';
+  src: url('/src/shared/assets/fonts/PIXY.ttf');
+}
+
+
+body {
+  background: url("/src/shared/assets/background/background.png") center center no-repeat  fixed;
+  background-size: cover;
+  background-color: black;
+  height: 100%;
+  font-family: tickingBomb !important;
+  color: #fff;
+}
+
+.Toastify__toast-theme--dark {
+  font-family: 'pixy', serif !important;
+  //border:rgb(255, 255, 255) solid 3px;
+  background-color: rgba(255, 199 , 0, 0.2) !important;
+
+}
+
+.Toastify__progress-bar-theme--dark {
+  background-color: #FFC700 !important;
+}
