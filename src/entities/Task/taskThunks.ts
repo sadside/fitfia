@@ -3,27 +3,17 @@ import {AxiosError, AxiosResponse} from 'axios';
 import {getTasks} from 'src/shared/api/ApiCalls.ts';
 import {BackendError} from 'src/app/types/global.ts';
 import {getErrorMessage} from 'src/shared/utils/api';
-import {Task} from 'src/entities/Task/taskModel.ts';
+import {TasksStages} from 'src/entities/Task/taskModel.ts';
 
 export const getTasksThunk = createAsyncThunk<
-    {
-        zero: Task[];
-        one: Task[];
-        two: Task[];
-    },
+    TasksStages,
     void,
     {rejectValue: string}
 >('user/getTasksThunk', async (_, {rejectWithValue}) => {
     try {
         const res: AxiosResponse<{
-            tasksMaps: {
-                zero: Task[];
-                one: Task[];
-                two: Task[];
-            };
+            tasksMaps: TasksStages;
         }> = await getTasks();
-
-        console.log(res.data);
 
         return res.data.tasksMaps;
     } catch (e: unknown | AxiosError<BackendError>) {

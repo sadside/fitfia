@@ -1,28 +1,36 @@
-import {Task} from 'src/entities/Task/taskModel.ts';
-import {createSlice} from '@reduxjs/toolkit';
+import {
+    CLIENT_STAGES,
+    STAGES,
+    TasksStages,
+} from 'src/entities/Task/taskModel.ts';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {getTasksThunk} from 'src/entities/Task/taskThunks.ts';
 import {toast} from 'react-toastify';
 
 type initialState = {
-    tasksMaps: {
-        zero: Task[];
-        one: Task[];
-        two: Task[];
-    };
+    tasksMaps: TasksStages;
+    currentStage: STAGES;
+    menuCurrentStage: CLIENT_STAGES;
 };
 
 const initialState: initialState = {
     tasksMaps: {
-        zero: [],
-        one: [],
-        two: [],
+        [STAGES.ZERO]: [],
+        [STAGES.ONE]: [],
+        [STAGES.TWO]: [],
     },
+    currentStage: STAGES.ONE,
+    menuCurrentStage: CLIENT_STAGES.ZERO,
 };
 
 const tasksSlice = createSlice({
     name: 'tasksSlice',
     initialState,
-    reducers: {},
+    reducers: {
+        setCurrentMenuStage: (state, action: PayloadAction<CLIENT_STAGES>) => {
+            state.menuCurrentStage = action.payload;
+        },
+    },
     extraReducers: builder => {
         builder.addCase(getTasksThunk.fulfilled, (state, action) => {
             state.tasksMaps = action.payload;
@@ -33,4 +41,5 @@ const tasksSlice = createSlice({
     },
 });
 
+export const {setCurrentMenuStage} = tasksSlice.actions;
 export default tasksSlice.reducer;
