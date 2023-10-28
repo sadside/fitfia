@@ -1,0 +1,58 @@
+.listOfTasks{
+    border-top-left-radius: 11px;
+    border-top-right-radius: 11px;
+    border:rgb(255, 255, 255) solid 3px;
+    background-color: rgba(255, 199 , 0, 0.1);
+    width: 638px;
+    height: calc(100% + 40px);
+    overflow-y:scroll;
+    border-bottom: none;
+}
+.wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.taskHeader{
+    color: rgba(255, 199 , 0);
+    font-size: 42px;
+    font-family: 'tickingBomb';
+    margin-left: 20px;
+}
+.stageSwitcher{
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.taskBorder{
+    height: 3px;
+    width: 638px;
+    background-color: #fff;
+}
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 90px;
+}
+.switchText{
+    font-size:42px;
+    color: #fff;
+    margin-right: 20px;
+}
+.scroll{
+    width: 635px;
+}  
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 199 , 0, 0.0);
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.0);
+}

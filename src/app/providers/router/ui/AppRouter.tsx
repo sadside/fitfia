@@ -17,7 +17,7 @@ export const AppRouter = () => {
                 <Route path="code" element={<ConfirmCodePage />} />
                 <Route path="/" element={<RequireAuth />}>
                     <Route index element={<TasksPage />} />
-                    <Route path="news" element={<TaskPage />} />
+                    <Route path="task" element={<TaskPage />} />
                 </Route>
             </Routes>
         </Suspense>

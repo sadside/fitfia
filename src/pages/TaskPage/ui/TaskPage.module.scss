@@ -1,0 +1,66 @@
+.curTaskFull{
+    width: 1337px;
+    height: 728px;
+    border-radius: 11px;
+    border:rgb(255, 255, 255) solid 3px;
+    background-color: rgba(255, 199 , 0, 0.1);
+    border-bottom: none;
+}
+.header{
+    height: 90px;
+}
+.border{
+    height: 3px;
+    width: 1334px;
+    background-color: #fff;
+}
+.taskTitle{
+    color: rgba(255, 199 , 0);
+    font-size: 42px;
+    font-family: 'tickingBomb';
+    margin: 20px;
+}
+.description{
+    font-size: 40px;
+    margin: 30px;
+    font-family: 'pixy', 'serif';
+    word-break:break-all;
+}
+.status{
+    color: #B3B3B3;
+    font-size: 48px;
+    font-family: 'tickingBomb'; 
+    margin-left: 30px;
+}
+.price{
+    color: #ffffff;
+    font-size: 48px;
+    font-family: 'tickingBomb'; 
+    margin: 30px;
+}
+.container{
+    width: 800px;
+}
+.img{
+    width: 500px;
+    height: 500px;
+    border-radius: 11px;
+    border:rgb(255, 255, 255) solid 3px;
+    margin: 30px;
+}
+.cont{
+    display: flex;
+}
+.answer{
+    margin: 30px;
+    font-family: 'pixy', serif;
+    color:#ffffff;
+    font-size: 48px;
+    width: 394px;
+    padding: 10px;
+    height: 55px;
+    border-radius: 11px;
+    border:rgb(255, 255, 255) solid 3px;
+    background-color: rgba(255, 199 , 0, 0.1);
+    outline: none;
+}

@@ -1,0 +1,56 @@
+.light{
+  background: none;
+  color: #FFC700;
+  text-shadow: 0 0 20px #FFC700;
+}
+.regText{
+  color: #ffffff;
+}
+.taskHeader{
+  color: #FFC700;
+  font-size: 32px;
+  font-family: 'tickingBomb';
+  margin-left: 20px;
+  margin-top: 10px;
+  text-decoration: none;
+}
+.taskDescription{
+  align-self: flex-start;
+  color: #ffffff;
+  font-size: 24px;
+  font-family: 'serif';
+  margin-left: 20px;
+}
+.taskPrice{
+  color: #ffffff;
+  font-size: 32px;
+  font-family: 'tickingBomb'; 
+  margin-left: 20px;
+}
+.taskStatus{
+  color: #B3B3B3;
+  font-size: 32px;
+  font-family: 'tickingBomb'; 
+  margin-left: 20px;
+}
+.task{
+  margin: 10px;
+  width: 600px;
+  height: 180px;
+  border-radius: 11px;
+  background-color: rgba(255, 199 , 0, 0.1);
+  display: flex;
+}
+.taskImg{
+  border-radius: 11px;
+  border:rgb(255, 255, 255) solid 3px;
+  width: 157px;
+  height: 157px;
+  margin-right: 10px;
+  margin-top: 8px;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  width:400px;
+}

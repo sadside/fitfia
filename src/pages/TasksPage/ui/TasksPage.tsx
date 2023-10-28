@@ -1,32 +1,44 @@
-import styles from './TasksPage.module.scss'
-import {FC} from "react";
+import styles from './TasksPage.module.scss';
+import {FC, useEffect} from 'react';
+import {Task} from 'src/widgets/task/ui/Task.tsx';
+import {StageCounter} from 'src/widgets/stageCounter/ui/StageCounter.jsx';
+import {useAppDispatch} from 'src/shared/utils/hooks/redux.ts';
+import {getTasksThunk} from 'src/entities/Task/taskThunks.ts';
 
 interface TasksPageProps {
-    className?: string,
+    className?: string;
 }
 
 export const TasksPage: FC<TasksPageProps> = () => {
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(getTasksThunk());
+    }, []);
+
     return (
-        <>
-            {/*<Profile />*/}
+        <div className={styles.wrapper}>
             <div className={styles.listOfTasks}>
                 <div className={styles.header}>
                     <p className={styles.taskHeader}>Tasks</p>
                     <div className={styles.stageSwitcher}>
                         <p className={styles.switchText}>choose the stage</p>
-                        {/*<div className={styles.stageNumber}><img className={styles.locked} src={locked} alt="Locked" /></div>*/}
-                        {/*<div className={styles.stageNumber}><img className={styles.locked} src={locked} alt="Locked" /></div>*/}
-                        {/*<div className={styles.stageNumber}><img className={styles.locked} src={locked} alt="Locked" /></div>*/}
+                        <StageCounter stage={0} />
+                        <StageCounter stage={1} />
+                        <StageCounter stage={2} />
                     </div>
                 </div>
-                <div className={styles.curTborder}></div>
+                <div className={styles.taskBorder}></div>
+
                 <div className={styles.scroll}>
-                    {/*{tasks.map((task) => (*/}
-                    {/*    <Task key={task.id} title={task.title} description={task.description} image={task.image} price={task.price} />*/}
-                    {/*))}*/}
+                    <Task />
+                    <Task />
+                    <Task />
+                    <Task />
+                    <Task />
+                    <Task />
                 </div>
             </div>
-            {/*<Navbar />*/}
-        </>
+        </div>
     );
 };

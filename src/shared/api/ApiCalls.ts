@@ -88,6 +88,9 @@ export const sendAnswer = (data: string) =>
 export const getTask = (id: number) =>
     axios.get(createApiCall(`/tasks/get/${id}`), getUserTokenHeader());
 
+export const getTasks = () =>
+    axios.get(createApiCall(`/tasks/get`), getUserTokenHeader());
+
 export const cancelTeamInvitation = () =>
     axios.post(
         createApiCall('/team/invitations/cancel'),

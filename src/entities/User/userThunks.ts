@@ -50,9 +50,11 @@ export const confirmEmailThunk = createAsyncThunk<
     Token,
     Token,
     {rejectValue: string}
->('user/confirmEmailThunk', async (code, {rejectWithValue}) => {
+>('user/confirmEmailThunk', async (code, {rejectWithValue, dispatch}) => {
     try {
         const res = await confirmEmail(code);
+        saveToken(res.data.token);
+        await dispatch(getUserInfoThunk());
 
         return res.data;
     } catch (e: unknown | AxiosError<BackendError>) {
