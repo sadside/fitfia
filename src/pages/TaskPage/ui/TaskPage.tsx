@@ -16,7 +16,10 @@ export const TaskPage: FC<TaskPageProps> = ({}: TaskPageProps) => {
                 <div className={styles.cont}>
                     <div className={styles.container}>
                         <div className={styles.description}>qweqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqewqweqweqweqqweqewqweqweqweqqweqewqweqweqweqqweqewqweqweqweq</div>
-                        <input className={styles.answer}></input>
+                        <div className={styles.cunt}>
+                            <input className={styles.answer}></input>
+                            <button type='submit' className={styles.answerButt}>send</button>
+                        </div>
                         <div className={styles.status}>asdads</div>
                         <div className={styles.price}>300</div>
                     </div>

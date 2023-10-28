@@ -14,22 +14,22 @@
     display: flex;
     justify-content: flex-end;
 }
-
 .taskHeader{
     color: rgba(255, 199 , 0);
     font-size: 42px;
     font-family: 'tickingBomb';
+    word-wrap: break-word;
     margin-left: 20px;
 }
 .stageSwitcher{
     color: #fff;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    align-items: center;
 }
 .taskBorder{
     height: 3px;
-    width: 638px;
+    width: 635px;
     background-color: #fff;
 }
 .header{
@@ -37,6 +37,8 @@
     align-items: center;
     justify-content: space-between;
     height: 90px;
+     word-wrap: break-word;
+
 }
 .switchText{
     font-size:42px;
@@ -44,7 +46,13 @@
     margin-right: 20px;
 }
 .scroll{
+    height: calc(64%);
+    position: absolute;
+    right: 27px;
+    top:340px;
+    border-radius: 11px;
     width: 635px;
+    overflow-y: scroll;
 }  
 ::-webkit-scrollbar {
   width: 10px;

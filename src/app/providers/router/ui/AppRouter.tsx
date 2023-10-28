@@ -7,6 +7,8 @@ import {RegisterPage} from 'src/pages/RegisterPage';
 import {LoginPage} from 'src/pages/LoginPage';
 import RequireAuth from 'src/app/providers/routerHocs/ui/RequireAuth.tsx';
 import {ConfirmCodePage} from 'src/pages/ConfirmCodePage';
+import {NewsPage} from 'src/pages/NewsPage';
+import {ProfilePage} from 'src/pages/ProfilePage';
 
 export const AppRouter = () => {
     return (
@@ -18,6 +20,8 @@ export const AppRouter = () => {
                 <Route path="/" element={<RequireAuth />}>
                     <Route index element={<TasksPage />} />
                     <Route path="task" element={<TaskPage />} />
+                    <Route path="news" element={<NewsPage />} />
+                    <Route path="profile" element={<ProfilePage />} />
                 </Route>
             </Routes>
         </Suspense>

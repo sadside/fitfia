@@ -1,0 +1,33 @@
+.new{
+  width: 480px;
+  height: 70px;
+  margin: 10px;
+  font-family: 'pixy';
+  font-size: 40px;
+  border-radius: 11px;
+  border:rgb(255, 255, 255) solid 2px;
+  background-color: rgba(255, 199 , 0, 0.1);
+  text-align: center;
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -ms-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+  -webkit-transform: translateX(-90%);
+  -moz-transform: translateX(-90%);
+  -ms-transform: translateX(-90%);
+  -o-transform: translateX(-90%);
+  transform: translateX(-90%);
+
+}
+.new:hover{
+  -webkit-transform: translateX(0%);
+  -moz-transform: translateX(0%);
+  -ms-transform: translateX(0%);
+  -o-transform: translateX(0%);
+  transform: translateX(0%);
+
+  height: 500px;
+  margin: 10px;
+  overflow-y: scroll;
+}

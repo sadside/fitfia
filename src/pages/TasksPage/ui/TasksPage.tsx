@@ -1,21 +1,13 @@
 import styles from './TasksPage.module.scss';
-import {FC, useEffect} from 'react';
-import {Task} from 'src/widgets/task/ui/Task.tsx';
+import {FC} from 'react';
 import {StageCounter} from 'src/widgets/stageCounter/ui/StageCounter.jsx';
-import {useAppDispatch} from 'src/shared/utils/hooks/redux.ts';
-import {getTasksThunk} from 'src/entities/Task/taskThunks.ts';
+import {Task} from 'src/widgets/task';
 
 interface TasksPageProps {
     className?: string;
 }
 
 export const TasksPage: FC<TasksPageProps> = () => {
-    const dispatch = useAppDispatch();
-
-    useEffect(() => {
-        dispatch(getTasksThunk());
-    }, []);
-
     return (
         <div className={styles.wrapper}>
             <div className={styles.listOfTasks}>
@@ -29,7 +21,6 @@ export const TasksPage: FC<TasksPageProps> = () => {
                     </div>
                 </div>
                 <div className={styles.taskBorder}></div>
-
                 <div className={styles.scroll}>
                     <Task />
                     <Task />

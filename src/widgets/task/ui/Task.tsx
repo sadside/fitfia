@@ -12,9 +12,6 @@ export const Task = ({}: ProfileProps) => {
                 <Link to="/task" className={styles.taskHeader}>
                     qweqwe
                 </Link>
-                <div className={styles.taskDescription}>
-                    qweqewqweqweqweqqweqewqweqweqweqqweqewqweqweqweqqweqewqweqweqweqqweqewqweqweqweqqweqewqweqweqweqqweqewqweqweqweqqweqewqweqweqweqqweqewqweqweqweqqweqewqweqweqweqqweqewqweqweqweqqweqewqweqweqweqqweqewqweqweqweqqweqewqweqweqweqqweqewqweqweqweq
-                </div>
                 <div className={styles.taskStatus}>asdads</div>
                 <div className={styles.taskPrice}>300</div>
             </div>

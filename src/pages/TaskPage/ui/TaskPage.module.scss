@@ -64,3 +64,22 @@
     background-color: rgba(255, 199 , 0, 0.1);
     outline: none;
 }
+.answerButt{
+    border-radius: 11px;
+    border:rgb(255, 255, 255) solid 3px;
+    background-color: rgba(255, 199 , 0, 0.1);  
+    width: 60px;
+    height: 55px; 
+    cursor: pointer;
+    color: #fff;
+    font-size: 30px;
+}
+.answerButt:hover{
+    background-color: none;
+    color: #FFC700;
+    text-shadow: 0 0 20px #FFC700;
+}
+.cunt{
+    display: flex;
+    align-items: center;
+}

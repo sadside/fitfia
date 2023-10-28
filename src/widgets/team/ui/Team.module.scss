@@ -1,0 +1,30 @@
+.team{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 460px;
+  height: 80px;
+  background-color: rgba(255, 199 , 0, 0.1);
+  margin: 5px;  
+  border-radius: 11px;
+
+}
+.name{
+  font-family: 'pixy';
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 100;
+  width: 300px;
+  word-wrap: break-word;
+
+}
+.balance{
+  width: 150px;
+  font-family: 'pixy';
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 100;
+}
+table{
+  margin: 0;
+}
