@@ -14,15 +14,19 @@
   src: url('/src/shared/assets/fonts/PIXY.ttf');
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Handjet:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 body {
   background: url("/src/shared/assets/background/background.png") center center no-repeat  fixed;
   background-size: cover;
   background-color: black;
   height: 100%;
-  font-family: tickingBomb !important;
   color: #fff;
   overflow: hidden;
+}
+
+* {
+  font-family: 'pixy', sans-serif !important;
 }
 
 .Toastify__toast-theme--dark {

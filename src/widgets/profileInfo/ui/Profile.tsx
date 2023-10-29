@@ -2,6 +2,7 @@ import styles from './Profile.module.scss';
 import {useAppSelector} from 'src/shared/utils/hooks/redux.ts';
 import {User} from 'src/entities/User/userModel.ts';
 import {Link} from 'react-router-dom';
+import avatar from 'src/shared/assets/images/ava.jpeg';
 
 interface ProfileProps {
     className?: string;
@@ -14,7 +15,9 @@ export const Profile = ({}: ProfileProps) => {
     return (
         <div className={styles.profileInfo}>
             <div className={styles.fullProfile}>
-                <div className={styles.ava}></div>
+                <div className={styles.ava}>
+                    <img src={avatar} height={141} width={141} />
+                </div>
                 <div className={styles.withoutDickPick}>
                     <div
                         className={`${styles.nicknameAndLevel} ${styles.profileItem}`}>

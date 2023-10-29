@@ -1,12 +1,16 @@
 import styles from './Loader.module.scss';
 import {FC} from 'react';
-// @ts-ignore
-import {ReactComponent as Load} from 'src/shared/assets/svg/loader_svg.svg';
+import loader from 'src/shared/assets/svg/load.svg';
 
 interface LoaderProps {
-    className?: string;
+    height?: number;
+    width?: number;
 }
 
-export const Loader: FC<LoaderProps> = ({}) => {
-    return <div className={styles.wrapper}>loading</div>;
+export const Loader: FC<LoaderProps> = ({width = 30, height = 30}) => {
+    return (
+        <div className={styles.wrapper}>
+            <img src={loader} alt="Загрузка..." width={width} height={height} />
+        </div>
+    );
 };

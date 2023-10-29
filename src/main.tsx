@@ -1,10 +1,10 @@
 import ReactDOM from 'react-dom/client';
 import './app/styles/index.scss';
-import {BrowserRouter} from 'react-router-dom';
 import App from 'src/app/App.tsx';
 import rootReducer from 'src/app/reducers';
 import {configureStore} from '@reduxjs/toolkit';
 import {Provider} from 'react-redux';
+import {BrowserRouter} from 'react-router-dom';
 
 const store = configureStore({
     reducer: rootReducer,

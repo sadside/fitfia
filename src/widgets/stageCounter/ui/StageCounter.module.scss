@@ -25,6 +25,12 @@
   text-decoration: none;
   margin-left: 10px;
 }
+
+.locked {
+  border: #a1a1a1 solid 2px;
+  cursor: not-allowed;
+}
+
 .stageText{
   text-decoration: none;
   color: #ffffff;

@@ -1,11 +1,10 @@
 .listOfTasks{
     border-top-left-radius: 11px;
     border-top-right-radius: 11px;
-    border:rgb(255, 255, 255) solid 3px;
+    border:rgb(255, 255, 255) solid 2px;
     background-color: rgba(255, 199 , 0, 0.1);
-    width: 700px;
+    width: 638px;
     height: calc(100% + 40px);
-    overflow-y:scroll;
     border-bottom: none;
 }
 .wrapper {
@@ -14,13 +13,6 @@
     display: flex;
     justify-content: flex-end;
 }
-.taskHeader{
-    color: rgba(255, 199 , 0);
-    font-size: 42px;
-    font-family: 'tickingBomb';
-    word-wrap: break-word;
-    margin-left: 20px;
-}
 .stageSwitcher{
     color: #fff;
     display: flex;
@@ -28,39 +20,38 @@
     align-items: center;
 }
 .taskBorder{
-    height: 3px;
-    width: 100%;
+    height: 2px;
+    width: 635px;
     background-color: #fff;
 }
 .header{
+    margin-left: 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 90px;
-     word-wrap: break-word;
-
+    word-wrap: break-word;
 }
 .switchText{
-    font-size:42px;
+    font-size:36px;
     color: #fff;
     margin-right: 20px;
 }
 .scroll{
     height: calc(64%);
-    position: absolute;
-    right: 27px;
-    top:340px;
-    border-radius: 11px;
-    width: 635px;
+    width: 100%;
+    height: 86%;
     overflow-y: scroll;
-}  
+}
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+    display: none;
 }
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 199 , 0, 0.0);
-}
-::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.0);
+
+.locked {
+    height: 100%;
+    width: 100%;
+    font-family: 'pixy', serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

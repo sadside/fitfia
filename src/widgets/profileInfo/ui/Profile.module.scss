@@ -15,8 +15,13 @@
 .ava{
   width: 141px;
   height: 141px;
-  border-radius: 11px;
-  border:rgb(255, 255, 255) solid 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img {
+    border-radius: 11px;
+    border:rgb(255, 255, 255) solid 3px;
+  }
 }
 .nick, .team, .balance {
   color: #FFC700;

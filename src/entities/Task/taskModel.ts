@@ -28,3 +28,40 @@ export enum STAGES {
     TWO = 'TWO',
     ZERO = 'ZERO',
 }
+
+export enum ANSWER_STATUSES {
+    CORRECT = 'CORRECT',
+    WRONG = 'WRONG',
+    NOT_SENT = 'NOT_SENT',
+    SENT_TO_CHECK = 'SENT_TO_CHECK',
+}
+
+export enum ANSWER_TYPES {
+    COMMON = 'COMMON',
+    MANUAL = 'MANUAL',
+    MULTIPLE_ANSWERS = 'MULTIPLE_ANSWERS',
+    DECREASING = 'DECREASING',
+}
+
+export enum TASK_STATUSES {
+    LOCKED = 'LOCKED',
+    AVAILABLE = 'AVAILABLE',
+    COMPLETED = 'COMPLETED',
+}
+
+export type FullTask = {
+    answerStatus: ANSWER_STATUSES;
+    answerType: ANSWER_TYPES;
+    content: string;
+    filename: string;
+    taskInfo: {
+        id: number;
+        isDaily: boolean;
+        positionX: number;
+        positionY: number;
+        potentialPoints: string;
+        solvedPoints: number;
+        status: TASK_STATUSES;
+        title: string;
+    };
+};
