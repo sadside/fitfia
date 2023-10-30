@@ -28,6 +28,9 @@ const getJSONHeader = () => {
 
 export const getNews = () => axios.get(createApiCall('/news/list'));
 
+export const getNew = (id: number) =>
+    axios.get(createApiCall(`/news/article?id=${id}`));
+
 export const getNewsEvent = (id: number) =>
     axios.get(createApiCall(`/news/article?id=${id}`));
 
@@ -69,13 +72,18 @@ export const getNotifications = () =>
 export const getTeamInfo = () =>
     axios.get(createApiCall('/team/info'), getUserTokenHeader());
 
+export const createTeam = (name: string) =>
+    axios.post(createApiCall('/team/info'), name, getUserTokenHeader());
+
 export const getTeamPoints = () =>
     axios.get(createApiCall('/team/points'), getUserTokenHeader());
 
 export const editTeamInfo = (data: string) =>
     axios.post(
-        createApiCall(`/team/info/edit?team_name`),
-        data,
+        createApiCall(`/team/info/edit`),
+        {
+            team_name: data,
+        },
         getUserTokenHeader()
     );
 

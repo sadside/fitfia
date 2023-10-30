@@ -1,6 +1,9 @@
 import {Team} from 'src/entities/Team/teamModel.ts';
 import {createSlice} from '@reduxjs/toolkit';
-import {getTeamInfoThunk} from 'src/entities/Team/teamThunks.ts';
+import {
+    createTeamThunk,
+    getTeamInfoThunk,
+} from 'src/entities/Team/teamThunks.ts';
 import {toast} from 'react-toastify';
 
 type initialState = {
@@ -17,9 +20,16 @@ const teamSlice = createSlice({
     reducers: {},
     extraReducers: builder => {
         builder.addCase(getTeamInfoThunk.fulfilled, (state, action) => {
+            //@ts-ignore
             state.teamInfo = action.payload;
         });
         builder.addCase(getTeamInfoThunk.rejected, (_, action) => {
+            toast.error(action.payload);
+        });
+        builder.addCase(createTeamThunk.fulfilled, (state, action) => {
+            state.teamInfo = action.payload;
+        });
+        builder.addCase(createTeamThunk.rejected, (_, action) => {
             toast.error(action.payload);
         });
     },

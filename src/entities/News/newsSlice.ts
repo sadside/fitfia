@@ -5,7 +5,10 @@ import {toast} from 'react-toastify';
 
 type initialState = {
     news: New[];
-    currentNew: New | null;
+    currentNew: {
+        details: New;
+        text: string;
+    } | null;
 };
 
 const initialState: initialState = {

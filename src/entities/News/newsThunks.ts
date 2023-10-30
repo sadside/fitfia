@@ -1,6 +1,6 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {AxiosError, AxiosResponse} from 'axios';
-import {getNews, getTask} from 'src/shared/api/ApiCalls.ts';
+import {getNew, getNews} from 'src/shared/api/ApiCalls.ts';
 import {BackendError} from 'src/app/types/global.ts';
 import {getErrorMessage} from 'src/shared/utils/api';
 import {New} from 'src/entities/News/newsModel.ts';
@@ -22,7 +22,10 @@ export const getNewsThunk = createAsyncThunk<
 });
 
 export const getNewByIdThunk = createAsyncThunk<
-    New,
+    {
+        details: New;
+        text: string;
+    },
     number,
     {rejectValue: string}
 >('user/getNewByIdThunk', async (id, {rejectWithValue}) => {
@@ -32,9 +35,9 @@ export const getNewByIdThunk = createAsyncThunk<
                 details: New;
                 text: string;
             };
-        }> = await getTask(id);
+        }> = await getNew(id);
 
-        return res.data.content.details;
+        return res.data.content;
     } catch (e: unknown | AxiosError<BackendError>) {
         return rejectWithValue(getErrorMessage(e));
     }

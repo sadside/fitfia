@@ -6,6 +6,7 @@ import {CurrentTeam} from 'src/widgets/currentTeam/ui/currentTeam.tsx';
 import {useAppDispatch, useAppSelector} from 'src/shared/utils/hooks/redux.ts';
 import {getUsersRatingThunks} from 'src/entities/Rating/ratingThunks.ts';
 import {Loader} from 'src/shared/ui/Loader';
+import {createTeamThunk} from 'src/entities/Team/teamThunks.ts';
 
 interface ProfilePageProps {
     className?: string;
@@ -25,6 +26,7 @@ export const ProfilePage: FC<ProfilePageProps> = () => {
 
     useEffect(() => {
         dispatch(getUsersRatingThunks());
+        dispatch(createTeamThunk('test'));
     }, []);
 
     return (
@@ -40,7 +42,8 @@ export const ProfilePage: FC<ProfilePageProps> = () => {
                             />
                         ) : (
                             <div className={styles.enough}>
-                                Ты не в команде, создай или жди приглашения!
+                                Ты не в команде, создай (пригласи сам) или жди
+                                приглашения! Твои приглашения ниже
                             </div>
                         )}
                     </div>
