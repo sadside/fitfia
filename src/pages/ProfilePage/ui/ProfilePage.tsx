@@ -6,7 +6,7 @@ import {CurrentTeam} from 'src/widgets/currentTeam/ui/currentTeam.tsx';
 import {useAppDispatch, useAppSelector} from 'src/shared/utils/hooks/redux.ts';
 import {getUsersRatingThunks} from 'src/entities/Rating/ratingThunks.ts';
 import {Loader} from 'src/shared/ui/Loader';
-import {createTeamThunk} from 'src/entities/Team/teamThunks.ts';
+import {getTeamInfoThunk} from 'src/entities/Team/teamThunks.ts';
 
 interface ProfilePageProps {
     className?: string;
@@ -20,13 +20,17 @@ export const ProfilePage: FC<ProfilePageProps> = () => {
         state => state?.user?.user?.content.achievements
     );
 
+    const email = useAppSelector(
+        state => state?.user?.user?.content.userName.email
+    );
+
     const status = useAppSelector(state => state.rating.status);
 
     const dispatch = useAppDispatch();
 
     useEffect(() => {
         dispatch(getUsersRatingThunks());
-        dispatch(createTeamThunk('test'));
+        dispatch(getTeamInfoThunk());
     }, []);
 
     return (
@@ -36,9 +40,13 @@ export const ProfilePage: FC<ProfilePageProps> = () => {
                     <div className={styles.teamHolder}>
                         {team?.team_name ? (
                             <CurrentTeam
-                                name="123"
-                                balance={100}
-                                copilot="asda"
+                                name={team.team_name}
+                                balance={0}
+                                copilot={
+                                    team.members.filter(
+                                        item => item.email !== email
+                                    )[0].email
+                                }
                             />
                         ) : (
                             <div className={styles.enough}>

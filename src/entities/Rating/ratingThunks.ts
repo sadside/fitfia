@@ -9,7 +9,7 @@ export const getUsersRatingThunks = createAsyncThunk<
     Rating[],
     void,
     {rejectValue: string}
->('user/getUsersRatingThunks', async (_, {rejectWithValue}) => {
+>('rating/getUsersRatingThunks', async (_, {rejectWithValue}) => {
     try {
         const res: AxiosResponse<{rating: Rating[]}> =
             await getUsersRating('DESC');

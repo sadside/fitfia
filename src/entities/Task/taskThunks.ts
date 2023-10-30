@@ -16,7 +16,7 @@ export const getTasksThunk = createAsyncThunk<
     TasksStages,
     void,
     {rejectValue: string}
->('user/getTasksThunk', async (_, {rejectWithValue}) => {
+>('tasks/getTasksThunk', async (_, {rejectWithValue}) => {
     try {
         const res: AxiosResponse<{
             tasksMaps: TasksStages;
@@ -35,7 +35,7 @@ export const getStageInfoThunk = createAsyncThunk<
     },
     void,
     {rejectValue: string}
->('user/getStageInfoThunk', async (_, {rejectWithValue}) => {
+>('tasks/getStageInfoThunk', async (_, {rejectWithValue}) => {
     try {
         const res: AxiosResponse<{
             currentStage: {
@@ -54,7 +54,7 @@ export const getTaskByIdThunk = createAsyncThunk<
     FullTask,
     number,
     {rejectValue: string}
->('user/getTaskByIdThunk', async (id, {rejectWithValue}) => {
+>('tasks/getTaskByIdThunk', async (id, {rejectWithValue}) => {
     try {
         const res: AxiosResponse<FullTask> = await getTask(id);
 
@@ -69,7 +69,7 @@ export const sendAnswerFileThunk = createAsyncThunk<
     {data: FormData; id: number},
     {rejectValue: string}
 >(
-    'user/sendAnswerFileThunk',
+    'tasks/sendAnswerFileThunk',
     async ({data, id}, {rejectWithValue, dispatch}) => {
         try {
             const res = await sendFileAnswer({
@@ -92,7 +92,7 @@ export const sendAnswerThunk = createAsyncThunk<
     any,
     {answer: string; id: number},
     {rejectValue: string}
->('user/sendAnswerFile', async ({answer, id}, {rejectWithValue, dispatch}) => {
+>('tasks/sendAnswerFile', async ({answer, id}, {rejectWithValue, dispatch}) => {
     try {
         const res = await sendAnswer({answer, taskId: id});
 

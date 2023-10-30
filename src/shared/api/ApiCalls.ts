@@ -118,14 +118,19 @@ export const cancelTeamInvitation = () =>
 export const inviteUserToTeam = (data: string) =>
     axios.post(
         createApiCall('/team/invitations/invite'),
-        data,
+        {
+            user_to_invite: data,
+        },
         getUserTokenHeader()
     );
 
-export const respondUserInvitation = (data: string) =>
+export const respondUserInvitation = (data: number) =>
     axios.post(
         createApiCall('/team/invitations/respond'),
-        data,
+        {
+            action: 'ACCEPT',
+            id: data,
+        },
         getUserTokenHeader()
     );
 

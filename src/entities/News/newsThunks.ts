@@ -9,7 +9,7 @@ export const getNewsThunk = createAsyncThunk<
     New[],
     void,
     {rejectValue: string}
->('user/getNewsThunk', async (_, {rejectWithValue}) => {
+>('news/getNewsThunk', async (_, {rejectWithValue}) => {
     try {
         const res: AxiosResponse<{
             content: New[];
@@ -28,7 +28,7 @@ export const getNewByIdThunk = createAsyncThunk<
     },
     number,
     {rejectValue: string}
->('user/getNewByIdThunk', async (id, {rejectWithValue}) => {
+>('news/getNewByIdThunk', async (id, {rejectWithValue}) => {
     try {
         const res: AxiosResponse<{
             content: {

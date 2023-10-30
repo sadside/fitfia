@@ -72,11 +72,10 @@ export const TasksPage: FC<TasksPageProps> = () => {
                             );
                         })}
 
-                    {status === 'idle' && tasks[clientStage].length == 0 && (
+                    {!tasks[clientStage].length && (
                         <div className={styles.locked}>
                             Заданий нет, мы вам перезвоним👋
                             <br />
-                            (нахуй иди)
                         </div>
                     )}
                 </div>
