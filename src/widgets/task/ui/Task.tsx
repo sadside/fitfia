@@ -21,7 +21,7 @@ export const Task = ({title, status, points, id}: ProfileProps) => {
                 )}
                 <div className={styles.taskHeader}></div>
                 <div className={styles.taskStatus}>{status}</div>
-                <div className={styles.taskPrice}>{points}</div>
+                <div className={styles.taskPrice}>Price: {points}</div>
             </div>
         </div>
     );
