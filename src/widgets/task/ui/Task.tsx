@@ -16,7 +16,7 @@ export const Task = ({title, status, points, id}: ProfileProps) => {
                     {title}
                 </Link>
                 <div className={styles.taskStatus}>{status}</div>
-                <div className={styles.taskPrice}>{points}</div>
+                <div className={styles.taskPrice}>Price: {points}</div>
             </div>
         </div>
     );

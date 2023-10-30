@@ -94,9 +94,8 @@
     height: calc(100vh + 100px);
     border-radius: 11px;
     border:rgb(255, 255, 255) solid 3px;
-
     border-bottom: none;
-    background-color: rgba(61, 47, 0, 0.6);;
+    background-color: rgba(61, 47, 0, 0.6);
     overflow-y: auto;
 }
 .header{
@@ -168,7 +167,7 @@
     height: 55px;
     border-radius: 11px;
     border:rgb(255, 255, 255) solid 3px;
-    background-color: rgba(255, 199 , 0, 0.1);
+    background-color: rgba(61, 47, 0, 0.6);
     outline: none;
 }
 .answerButt{
@@ -178,7 +177,7 @@
     align-items: center;
     justify-content: center;
     border:rgb(255, 255, 255) solid 3px;
-    background-color: rgba(255, 199 , 0, 0.1);  
+    background-color: rgba(61, 47, 0, 0.6);
     width: 160px;
     height: 55px; 
     cursor: pointer;
@@ -188,7 +187,7 @@
 
 .uploadFile {
     height: 55px;
-    background-color: red;
+    // background-color: red;
     cursor: pointer;
     display: flex;
     border-radius: 11px;
@@ -196,7 +195,7 @@
     justify-content: center;
     padding: 0 15px;
     border:rgb(255, 255, 255) solid 3px;
-    background-color: rgba(255, 199 , 0, 0.1);
+    background-color: rgba(61, 47, 0, 0.6);
     font-size: 24px;
     &:hover {
         background-color: none;
