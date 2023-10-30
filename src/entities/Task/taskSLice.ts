@@ -2,6 +2,7 @@ import {
     CLIENT_STAGES,
     FullTask,
     STAGES,
+    TASK_STATUSES,
     TasksStages,
 } from 'src/entities/Task/taskModel.ts';
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
@@ -9,6 +10,8 @@ import {
     getStageInfoThunk,
     getTaskByIdThunk,
     getTasksThunk,
+    sendAnswerFileThunk,
+    sendAnswerThunk,
 } from 'src/entities/Task/taskThunks.ts';
 import {toast} from 'react-toastify';
 
@@ -19,6 +22,7 @@ type initialState = {
     status: string;
     stageEndDate: string;
     fullTask: FullTask | null;
+    hideTask: boolean;
 };
 
 const initialState: initialState = {
@@ -29,9 +33,10 @@ const initialState: initialState = {
     },
     currentStage: STAGES.ZERO,
     menuCurrentStage: CLIENT_STAGES.ZERO,
-    status: 'idle',
+    status: 'loading',
     stageEndDate: '',
     fullTask: null,
+    hideTask: false,
 };
 
 const tasksSlice = createSlice({
@@ -70,8 +75,49 @@ const tasksSlice = createSlice({
             state.fullTask = action.payload;
         });
         builder.addCase(getTaskByIdThunk.rejected, (state, action) => {
-            toast.error(action.payload);
+            if (action.payload === 'Неверный id задачи.')
+                toast.error('Самый умный?');
+            else toast.error(action.payload);
+
             state.status = 'error with full tasks';
+        });
+        builder.addCase(sendAnswerThunk.fulfilled, (state, action) => {
+            state.status = 'idle';
+            if (action.payload.message === 'Задание выполнено.') {
+                toast.success(action.payload.message);
+                if (state.fullTask) {
+                    state.fullTask.taskInfo.status = TASK_STATUSES.COMPLETED;
+                    state.hideTask = true;
+                }
+            } else {
+                toast.error(action.payload.message);
+            }
+        });
+        builder.addCase(sendAnswerThunk.pending, state => {
+            state.status = 'sending answer';
+        });
+        builder.addCase(sendAnswerThunk.rejected, (state, action) => {
+            state.status = 'idle';
+            toast.error(action.payload);
+        });
+        builder.addCase(sendAnswerFileThunk.fulfilled, (state, action) => {
+            state.status = 'idle';
+            if (action.payload.message === 'Задание выполнено.') {
+                toast.success(action.payload.message);
+                if (state.fullTask) {
+                    state.fullTask.taskInfo.status = TASK_STATUSES.COMPLETED;
+                    state.hideTask = true;
+                }
+            } else {
+                toast.error(action.payload.message);
+            }
+        });
+        builder.addCase(sendAnswerFileThunk.pending, state => {
+            state.status = 'sending answer';
+        });
+        builder.addCase(sendAnswerFileThunk.rejected, (state, action) => {
+            state.status = 'idle';
+            toast.error(action.payload);
         });
     },
 });

@@ -3,7 +3,6 @@ import {NavLink} from 'react-router-dom';
 // @ts-ignore
 import useSound from 'use-sound';
 import menuSound from 'src/shared/assets/sounds/menu.mp3';
-import {useState} from 'react';
 import {Timer} from 'src/shared/ui/Timer';
 
 interface SidebarProps {
@@ -12,41 +11,27 @@ interface SidebarProps {
 
 export const Sidebar = ({}: SidebarProps) => {
     const [play] = useSound(menuSound);
-    const pathName = window.location.pathname;
 
-    const [active, setActive] = useState(
-        window.location.pathname.replace('/', '')
-    );
-
-    console.log(pathName);
+    const setActive = ({isActive}: any) => isActive && `${styles.active}`;
 
     return (
         <ul className={styles.optionList}>
-            <li
-                className={`${styles.optionListItem} ${
-                    active === '' && `${styles.active}`
-                }`}
-                onClick={() => setActive('')}>
-                <NavLink to="/" onMouseEnter={play}>
-                    <a>Задания</a>
+            <li className={styles.optionListItem}>
+                <NavLink to="/" onMouseEnter={play} className={setActive}>
+                    Задания
                 </NavLink>
             </li>
-            <li
-                className={`${styles.optionListItem} ${
-                    active === 'news' && `${styles.active}`
-                }`}
-                onClick={() => setActive('news')}>
-                <NavLink to="/news" onMouseEnter={play}>
-                    <a>Новости</a>
+            <li className={styles.optionListItem}>
+                <NavLink to="/news" onMouseEnter={play} className={setActive}>
+                    Новости
                 </NavLink>
             </li>
-            <li
-                className={`${styles.optionListItem} ${
-                    active === 'profile' && `${styles.active}`
-                }`}
-                onClick={() => setActive('profile')}>
-                <NavLink to="/profile" onMouseEnter={play}>
-                    <a>Профиль</a>
+            <li className={styles.optionListItem}>
+                <NavLink
+                    to="/profile"
+                    onMouseEnter={play}
+                    className={setActive}>
+                    Профиль
                 </NavLink>
             </li>
             <Timer date={''} />

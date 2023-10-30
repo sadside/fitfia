@@ -33,7 +33,7 @@ export const TasksPage: FC<TasksPageProps> = () => {
             <div className={styles.listOfTasks}>
                 <div className={styles.header}>
                     <div className={styles.stageSwitcher}>
-                        <p className={styles.switchText}>choose the stage</p>
+                        <p className={styles.switchText}>Choose the stage</p>
                         <StageCounter
                             stage={CLIENT_STAGES.ZERO}
                             unlocked={
@@ -56,7 +56,10 @@ export const TasksPage: FC<TasksPageProps> = () => {
                 </div>
                 <div className={styles.taskBorder}></div>
                 <div className={styles.scroll}>
-                    {tasks[clientStage]?.length && status == 'idle' ? (
+                    {status === 'loading' && <Loader width={60} height={60} />}
+                    {status === 'error' && <div>Произошла ошибка :(</div>}
+                    {tasks[clientStage]?.length &&
+                        status == 'idle' &&
                         tasks[clientStage].map((task: Task) => {
                             return (
                                 <TaskComponent
@@ -67,16 +70,15 @@ export const TasksPage: FC<TasksPageProps> = () => {
                                     id={task.id}
                                 />
                             );
-                        })
-                    ) : (
+                        })}
+
+                    {status === 'idle' && tasks[clientStage].length == 0 && (
                         <div className={styles.locked}>
                             Заданий нет, мы вам перезвоним👋
                             <br />
                             (нахуй иди)
                         </div>
                     )}
-                    {status === 'loading' && <Loader width={60} height={60} />}
-                    {status === 'error' && <div>Произошла ошибка :(</div>}
                 </div>
             </div>
         </div>

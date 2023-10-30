@@ -4,7 +4,7 @@ import {getToken} from './Cookie';
 import {LoginData, RegisterData, Token} from 'src/entities/User/userModel.ts';
 
 const createApiCall: (restPath: string) => string = (restPath: string) => {
-    return `http://95.163.182.127/api/v1${restPath}`;
+    return `http://95.163.182.127:8080/api/v1${restPath}`;
 };
 
 const getUserTokenHeader = () => {
@@ -82,8 +82,17 @@ export const editTeamInfo = (data: string) =>
 export const getTeamInvitations = () =>
     axios.get(createApiCall('/team/invitations/all'), getUserTokenHeader());
 
-export const sendAnswer = (data: string) =>
+export const getUsersRating = (type: string) =>
+    axios.get(
+        createApiCall(`/statistic/rating/users?sortingType=${type}`),
+        getUserTokenHeader()
+    );
+
+export const sendAnswer = (data: {answer: string; taskId: number}) =>
     axios.post(createApiCall('/tasks/check'), data, getUserTokenHeader());
+
+export const sendFileAnswer = (data: {file: FormData; taskId: number}) =>
+    axios.post(createApiCall('/tasks/check/file'), data, getUserTokenHeader());
 
 export const getTask = (id: number) =>
     axios.get(createApiCall(`/tasks/get/${id}`), getUserTokenHeader());

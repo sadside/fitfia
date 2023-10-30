@@ -35,6 +35,9 @@ const userSlice = createSlice({
             state.status = action.payload;
             deleteToken();
         },
+        incrementUserBalance: (state, action: PayloadAction<number>) => {
+            if (state.user) state.user.content.points += action.payload;
+        },
     },
     extraReducers: builder => {
         builder.addCase(registerThunk.fulfilled, (state, _) => {
@@ -77,5 +80,6 @@ const userSlice = createSlice({
     },
 });
 
-export const {setShowCodeInput, setStatus} = userSlice.actions;
+export const {setShowCodeInput, setStatus, incrementUserBalance} =
+    userSlice.actions;
 export default userSlice.reducer;

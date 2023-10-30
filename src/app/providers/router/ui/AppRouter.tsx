@@ -10,6 +10,8 @@ import {ConfirmCodePage} from 'src/pages/ConfirmCodePage';
 import {NewsPage} from 'src/pages/NewsPage';
 import {ProfilePage} from 'src/pages/ProfilePage';
 import {RequireNotAuth} from 'src/app/providers/routerHocs/requireNotAuth';
+import {CreateTeamPage} from 'src/pages/createTeamPage';
+import {NewPage} from 'src/pages/newPage/ui/NewPage.tsx';
 
 export const AppRouter = () => {
     return (
@@ -42,8 +44,10 @@ export const AppRouter = () => {
                 <Route path="/" element={<RequireAuth />}>
                     <Route index element={<TasksPage />} />
                     <Route path="task/:taskId" element={<TaskPage />} />
-                    <Route path="news" element={<NewsPage />} />
+                    <Route path="news/" element={<NewsPage />} />
+                    <Route path="news/:newId" element={<NewPage />} />
                     <Route path="profile" element={<ProfilePage />} />
+                    <Route path="create-team" element={<CreateTeamPage />} />
                 </Route>
             </Routes>
         </Suspense>

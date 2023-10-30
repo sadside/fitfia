@@ -1,10 +1,57 @@
+.listOfTasks{
+    border-top-left-radius: 11px;
+    border-top-right-radius: 11px;
+    border:#ffffff solid 2px;
+    background-color: rgba(61, 47, 0, 0.6);
+    width: 638px;
+    height: calc(100% + 40px);
+    border-bottom: none;
+}
 .wrapper {
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: flex-end;
 }
-.newHolder{
+
+.taskBorder{
+    height: 2px;
+    width: 635px;
+    background-color: rgba(61, 47, 0, 0.6);
+    background-color: #ffffff;
+}
+.header{
+    margin-left: 40px;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+    word-wrap: break-word;
+}
+.switchText{
+    font-family: 'pixy';
+    
+    font-size:42px;
+    color: #fff;
+    margin-right: 20px;
+
+    word-break: break-all;
+}
+.scroll{
+    height: calc(64%);
+    width: 100%;
+    height: 86%;
+    overflow-y: scroll;
+    color: #FFC700;
+}  
+::-webkit-scrollbar {
+    display: none;
+}
+.timer{
+    color: #FFC700;
+    font-family: 'tickingBomb', 'pixy';
+    font-size: 88px;
+    text-align: center;
+    margin-right: 5%;
+    margin-bottom: 5%;
 }

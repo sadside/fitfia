@@ -1,14 +1,44 @@
 import styles from './News.module.scss';
-import {New} from 'src/widgets/new';
+import {New} from 'src/widgets/new/ui/New.tsx';
+import {useAppDispatch, useAppSelector} from 'src/shared/utils/hooks/redux.ts';
+import {useEffect} from 'react';
+import {getNewsThunk} from 'src/entities/News/newsThunks.ts';
+
+// interface TasksPageProps {
+//     className?: string;
+// }
 
 export const NewsPage = () => {
+    const dispatch = useAppDispatch();
+    const news = useAppSelector(state => state.news.news);
+
+    useEffect(() => {
+        dispatch(getNewsThunk());
+    }, []);
+
     return (
         <div className={styles.wrapper}>
-            <div className={styles.newHolder}>
-                <New header="hello" main="lorem" />
-                <New header="hello" main="lorem" />
-                <New header="hello" main="lorem" />
-                <New header="hello" main="lorem" />
+            <div className={styles.listOfTasks}>
+                <div className={styles.header}>
+                    <div className={styles.stageSwitcher}>
+                        <p className={styles.switchText}>news</p>
+                    </div>
+                </div>
+                <div className={styles.taskBorder}></div>
+                <div className={styles.scroll}>
+                    {news.length ? (
+                        news.map(item => (
+                            <New
+                                id={item.id}
+                                key={item.id}
+                                header={item.title}
+                                main={item.publicationTime}
+                            />
+                        ))
+                    ) : (
+                        <div>asda</div>
+                    )}
+                </div>
             </div>
         </div>
     );

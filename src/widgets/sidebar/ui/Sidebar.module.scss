@@ -17,10 +17,11 @@
     text-decoration: none;
   }
 
-  &.active {
-    color: #FFC700;
-    text-shadow: 0 0 20px #FFC700;
-  }
+}
+
+.active {
+  color: #FFC700;
+  text-shadow: 0 0 20px #FFC700;
 }
 
 .optionListItem:hover, a:hover{

@@ -2,11 +2,7 @@ import {FormValues} from 'src/pages/RegisterPage/ui/RegisterPage.tsx';
 
 export type User = {
     content: {
-        achievements: {
-            description: string;
-            image: string;
-            title: string;
-        }[];
+        achievements: Achievement[];
         avatarId: number;
         faculty: string;
         messengerLink: string;
@@ -16,6 +12,12 @@ export type User = {
             username: string;
         };
     };
+};
+
+export type Achievement = {
+    description: string;
+    image: string;
+    title: string;
 };
 
 export type RegisterData = Omit<FormValues, 'token'>;
