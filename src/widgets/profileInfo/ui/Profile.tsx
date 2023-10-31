@@ -1,7 +1,6 @@
 import styles from './Profile.module.scss';
 import {useAppSelector} from 'src/shared/utils/hooks/redux.ts';
 import {User} from 'src/entities/User/userModel.ts';
-import {Link} from 'react-router-dom';
 import avatar from 'src/shared/assets/images/ava.jpeg';
 
 interface ProfileProps {
@@ -10,7 +9,7 @@ interface ProfileProps {
 
 export const Profile = ({}: ProfileProps) => {
     const user = useAppSelector(state => state.user.user) as User;
-    const team = useAppSelector(state => state.team?.teamInfo);
+    // const team = useAppSelector(state => state.team?.teamInfo);
 
     return (
         <div className={styles.profileInfo}>

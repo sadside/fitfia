@@ -2,7 +2,6 @@ import styles from './ProfilePage.module.scss';
 import {FC, useEffect} from 'react';
 import {Achivment} from 'src/widgets/achivment/ui/Achivment.tsx';
 import {Team} from 'src/widgets/team/ui/Team.tsx';
-import {CurrentTeam} from 'src/widgets/currentTeam/ui/currentTeam.tsx';
 import {useAppDispatch, useAppSelector} from 'src/shared/utils/hooks/redux.ts';
 import {getUsersRatingThunks} from 'src/entities/Rating/ratingThunks.ts';
 import {Loader} from 'src/shared/ui/Loader';
@@ -13,16 +12,16 @@ interface ProfilePageProps {
 }
 
 export const ProfilePage: FC<ProfilePageProps> = () => {
-    const team = useAppSelector(state => state.team.teamInfo);
+    // const team = useAppSelector(state => state.team.teamInfo);
     const rating = useAppSelector(state => state.rating.rating);
 
     const achievements = useAppSelector(
         state => state?.user?.user?.content.achievements
     );
 
-    const email = useAppSelector(
-        state => state?.user?.user?.content.userName.email
-    );
+    // const email = useAppSelector(
+    //     state => state?.user?.user?.content.userName.email
+    // );
 
     const status = useAppSelector(state => state.rating.status);
 
@@ -54,8 +53,8 @@ export const ProfilePage: FC<ProfilePageProps> = () => {
                                 Ты не в команде, создай (пригласи сам) или жди
                                 приглашения! Твои приглашения ниже
                             </div>
-                        )}
-                    </div> */}
+                        )} */}
+                    </div>
                     <div className={styles.header1}>
                         <p className={styles.text}>Achivments</p>
                     </div>
