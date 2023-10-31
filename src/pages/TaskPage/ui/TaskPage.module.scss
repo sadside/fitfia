@@ -26,11 +26,13 @@
 
 }
 .description{
-    font-size: 40px;
     margin-left: 16px;
     width: 98%;
     overflow-wrap: break-word;
-    white-space: normal;
+    font-size: 28px;
+    * {
+        white-space: normal;
+    }
     hyphens:auto;
     * {
         font-family: 'PT Mono', 'serif' !important;
@@ -63,7 +65,7 @@
 .price{
     margin-top: 20px;
     color: #ffffff;
-    font-size: 48px;
+    font-size: 28px;
     font-family: 'tickingBomb';
     margin-left: 16px;
 
