@@ -25,15 +25,15 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 100px;
+    height: 90px;
     word-wrap: break-word;
 }
 .switchText{
-    font-family: 'pixy';
+    font-family: 'PT mono';
     
-    font-size:42px;
+    font-size:32px;
     color: #fff;
-    margin-right: 20px;
+    margin: 10px;
 
     word-break: break-all;
 }

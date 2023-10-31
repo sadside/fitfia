@@ -51,5 +51,6 @@ export const AppRouter = () => {
                 </Route>
             </Routes>
         </Suspense>
+
     );
 };

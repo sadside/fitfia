@@ -5,6 +5,7 @@ import {PageLoader} from 'src/shared/ui/pageLoader';
 
 const RequireAuth = () => {
     const isAuth = useAppSelector(state => state.user.isAuth);
+
     const loading = useAppSelector(state => state.user.status);
 
     if (loading === 'loading user info') return <PageLoader />;

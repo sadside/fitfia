@@ -86,7 +86,7 @@ export const TaskPage: FC<TaskPageProps> = ({}: TaskPageProps) => {
                     <div className={styles.cont}>
                         <div className={styles.container}>
                             <div className={styles.description}>
-                                Task:{' '}
+                                {' '}
                                 <FormattedMessage>
                                     {task?.content}
                                 </FormattedMessage>

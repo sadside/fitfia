@@ -8,6 +8,8 @@ import {useAppDispatch, useAppSelector} from 'src/shared/utils/hooks/redux.ts';
 import {toast} from 'react-toastify';
 import {registerThunk} from 'src/entities/User/userThunks.ts';
 import {useNavigate} from 'react-router-dom';
+import {Link} from 'react-router-dom';
+
 
 interface RegisterPageProps {
     className?: string;
@@ -152,14 +154,14 @@ export const RegisterPage: FC<RegisterPageProps> = ({}) => {
                                 </div>
                             )}
                         </div>
-                        <button type="submit">
-                            {/*<Link*/}
-                            {/*    to={'/code'}*/}
-                            {/*    className={styles.authLoginButton}>*/}
-                            {/*    ПОЛУЧИТЬ КОД*/}
-                            {/*</Link>*/}
-                            ПОЛУЧИТЬ КОД
-                        </button>
+                            <button type="submit" className={styles.authLoginButton}>
+                                {/*<Link*/}
+                                {/*    to={'/code'}*/}
+                                {/*    className={styles.authLoginButton}>*/}
+                                {/*    ПОЛУЧИТЬ КОД*/}
+                                {/*</Link>*/}
+                                ПОЛУЧИТЬ КОД
+                            </button>
                     </div>
                 </div>
             </form>

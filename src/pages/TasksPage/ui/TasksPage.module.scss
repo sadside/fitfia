@@ -34,9 +34,11 @@
 }
 .switchText{
     font-size:32px;
-    font-weight: bold;
+    // font-weight: bold;
+    // margin-right: 20px;
     color: #fff;
     margin-right: 20px;
+    font-family: "PT mono";
 }
 .scroll{
     height: calc(64%);
@@ -47,7 +49,9 @@
 ::-webkit-scrollbar {
     display: none;
 }
-
+// *{
+//     font-family: 'tickingBombRus';
+// }
 .locked {
     height: 100%;
     width: 100%;

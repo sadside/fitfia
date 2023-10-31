@@ -2,6 +2,7 @@ import styles from './LoginPage.module.scss';
 import {FC} from 'react';
 import {SubmitHandler, useForm} from 'react-hook-form';
 import {useNavigate} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {useAppDispatch, useAppSelector} from 'src/shared/utils/hooks/redux.ts';
 import {loginThunk} from 'src/entities/User/userThunks.ts';
 
@@ -97,9 +98,14 @@ export const LoginPage: FC<RegisterPageProps> = ({}) => {
                                 </div>
                             )}
                         </div>
-                        <button className={styles.authLoginButton}>
-                            Войти
-                        </button>
+                        <div className={styles.butts}>
+                            <button type="submit" className={styles.authLoginButton}>
+                                <Link to={"/registration"} className={styles.buttText}>НЕТ АККА? СОЗДАЙ!</Link>
+                            </button>  
+                            <button className={styles.authLoginButton}>
+                                Войти
+                            </button> 
+                        </div>
                     </div>
                 </div>
             </form>

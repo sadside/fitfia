@@ -25,7 +25,7 @@ export const Profile = ({}: ProfileProps) => {
                             {user.content.userName.username}
                         </div>
                         <div className={`${styles.level} ${styles.regText}`}>
-                            your iq: {Math.ceil(Math.random() * 40)}
+                            <p className={`${styles.level} ${styles.regText}`}>your iq: {Math.ceil(Math.random() * 40)}</p>
                         </div>
                     </div>
                     <div className={styles.line}></div>
@@ -37,9 +37,9 @@ export const Profile = ({}: ProfileProps) => {
                             {user?.content.points ? user?.content.points : 0}
                         </div>
                     </div>
-                    <div className={styles.line}></div>
-                    <div className={`${styles.fullTeam} ${styles.profileItem}`}>
-                        <div className={styles.team}>TEAM</div>
+                    {/* <div className={styles.line}></div> */}
+                    {/* <div className={`${styles.fullTeam} ${styles.profileItem}`}> */}
+                        {/* <div className={styles.team}>TEAM</div>
                         <div
                             className={`${styles.currentTeam} ${styles.regText}`}>
                             {team?.team_name ? (
@@ -51,8 +51,8 @@ export const Profile = ({}: ProfileProps) => {
                                     Create team
                                 </Link>
                             )}
-                        </div>
-                    </div>
+                        </div> */}
+                    {/* </div> */}
                 </div>
             </div>
         </div>
