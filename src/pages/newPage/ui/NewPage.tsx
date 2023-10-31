@@ -19,7 +19,6 @@ export const NewPage = () => {
             <div className={styles.curTaskFull}>
                 <div className={styles.description}>
                     {newItem ? newItem.text : <Loader height={50} width={50} />}
-                    выа
                 </div>
             </div>
         </>
