@@ -21,7 +21,7 @@
     background-color: #ffffff;
 }
 .header{
-    margin-left: 40px;
+    margin-left: 15px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -29,12 +29,11 @@
     word-wrap: break-word;
 }
 .switchText{
-    font-family: 'PT mono';
-    
-    font-size:32px;
+    font-family: 'PT mono', serif;
+    font-weight: bold;
+    font-size: 32px;
     color: #fff;
     margin: 10px;
-
     word-break: break-all;
 }
 .scroll{

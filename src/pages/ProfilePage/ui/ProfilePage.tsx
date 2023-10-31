@@ -37,7 +37,9 @@ export const ProfilePage: FC<ProfilePageProps> = () => {
             <div className={styles.profileSquares}>
                 <div className={styles.leftColumn}>
                     <div className={styles.teamHolder}>
-                        ХИХИХИ
+                        Здесь будет отображаться информация о твоей команде, на
+                        данном этапе добавление в команды недоступно, жди
+                        новостей!
                         {/* {team?.team_name ? (
                             <CurrentTeam
                                 name={team.team_name}
@@ -56,7 +58,7 @@ export const ProfilePage: FC<ProfilePageProps> = () => {
                         )} */}
                     </div>
                     <div className={styles.header1}>
-                        <p className={styles.text}>Achivments</p>
+                        <p className={styles.text}>Achievements</p>
                     </div>
                     <div className={styles.achivmentHolder}>
                         <div className={styles.achScroll}>
@@ -107,27 +109,23 @@ export const ProfilePage: FC<ProfilePageProps> = () => {
                         </div>
                         <div className={styles.border}></div>
                         <p className={styles.contacts}>
-                            <div className={styles.contact}>
-                                Backend:{' '}
-                                <a
-                                    href="https://t.me/a_a_surkova"
-                                    target="_blank">
-                                    Anastasya Surkova
-                                </a>
-                            </div>
-                            <div className={styles.contact}>
-                                Design and HTML & CSS:{' '}
-                                <a
-                                    href="https://t.me/aloha_kuino"
-                                    target="_blank">
-                                    Alexandr Shushakov
-                                </a>
-                            </div>
-                            <div className={styles.contact}>
-                                Frontend:{' '}
-                                <a href="https://t.me/khvadimd" target="_blank">
-                                    Vadim Khalikov
-                                </a>
+                            <div>
+                                <div className={styles.contact}>
+                                    Backend:{' '}
+                                    <a
+                                        href="https://t.me/a_a_surkova"
+                                        target="_blank">
+                                        Anastasya Surkova
+                                    </a>
+                                </div>
+                                <div className={styles.contact}>
+                                    Design and HTML & CSS:{' '}
+                                    <a
+                                        href="https://t.me/aloha_kuino"
+                                        target="_blank">
+                                        Alexandr Shushakov
+                                    </a>
+                                </div>
                             </div>
                         </p>
                     </div>

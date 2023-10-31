@@ -21,7 +21,7 @@ export const NewsPage = () => {
             <div className={styles.listOfTasks}>
                 <div className={styles.header}>
                     <div className={styles.stageSwitcher}>
-                        <p className={styles.switchText}>news</p>
+                        <p className={styles.switchText}>News</p>
                     </div>
                 </div>
                 <div className={styles.taskBorder}></div>

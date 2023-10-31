@@ -68,7 +68,7 @@ export const TaskPage: FC<TaskPageProps> = ({}: TaskPageProps) => {
     return (
         <div className={styles.curTaskFull}>
             <div className={styles.header}>
-                <p className={styles.taskTitle}>ПОЧЕМУ Я ЗДЕСЬ...</p>
+                <p className={styles.taskTitle}>{task?.taskInfo.title}</p>
                 <div className={styles.border}></div>
             </div>
             {status === 'loading full task' && !task && (

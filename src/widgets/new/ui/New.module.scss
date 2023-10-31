@@ -1,7 +1,8 @@
 .new{
   width: 96.5%;
   margin: 10px;
-  font-family: 'pixy';
+  padding: 10px 5px;
+  font-family: 'Ticking Timebomb BB' !important;
   font-size: 40px;
   border-radius: 11px;
   border:rgb(255, 255, 255) solid 2px;
@@ -12,13 +13,12 @@
   color: #FFC700
 }
 .header{
-  margin: 16px;
-  font-family: 'pixy';
-  // color: #fff;
+  text-transform: uppercase;
+  margin: 10px;
+  font-family: "tickingBombRus", serif !important;
   text-align: left;
   text-decoration: none;
   word-break: break-all;
-  margin: 10px;
   color: #FFC700;
 
 }

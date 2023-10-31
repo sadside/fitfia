@@ -19,11 +19,32 @@
 }
 
 .teamHolder, .memeHolder{
+
     border-radius: 11px;
     background-color: rgba(61, 47, 0, 0.6);
     border:rgb(255, 255, 255) solid 2px;
     flex-basis: 30%;
 }
+
+.teamHolder {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-family: "PT Mono" !important;
+}
+
+.contacts {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    * {
+        font-family: "PT Mono" !important;
+    }
+}
+
 .profileSquares {
     display: flex;
     width: 100%;
@@ -60,6 +81,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: "PT Mono" !important;
 }
 
 .memeHolder{
@@ -101,6 +123,9 @@
      height: 100%;
     overflow-y: scroll;
     padding: 10px;
+    * {
+        font-family: "PT Mono" !important;
+    }
 
 }
 .wrapper {
@@ -109,7 +134,7 @@
     display: flex;
 }
 .text{
-
+    font-family: 'tickingBombRus';
     margin-left: 10px;
 }
 ::-webkit-scrollbar {

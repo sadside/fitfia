@@ -40,8 +40,18 @@ body {
   overflow: hidden;
 }
 
+* {
+  font-family: 'PT mono', serif;
+}
+
+.Toastify__toast-container {
+  * {
+    font-family: "PT Mono" !important;
+  }
+}
+
 .Toastify__toast-theme--dark {
-  font-family: 'pixy', serif !important;
+  font-family: "tickingBombRus";
   //border:rgb(255, 255, 255) solid 3px;
   background-color: rgba(255, 199 , 0, 0.2) !important;
 
