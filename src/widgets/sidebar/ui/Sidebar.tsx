@@ -23,7 +23,7 @@ export const Sidebar = ({}: SidebarProps) => {
             </li>
             <li className={styles.optionListItem}>
                 <NavLink to="/news" onMouseEnter={play} className={setActive}>
-                   Новости
+                    Новости
                 </NavLink>
             </li>
             <li className={styles.optionListItem}>

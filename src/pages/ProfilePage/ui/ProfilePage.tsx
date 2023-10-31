@@ -34,7 +34,8 @@ export const ProfilePage: FC<ProfilePageProps> = () => {
             <div className={styles.profileSquares}>
                 <div className={styles.leftColumn}>
                     <div className={styles.teamHolder}>
-                        {team?.team_name ? (
+                        ХИХИХИ
+                        {/* {team?.team_name ? (
                             <CurrentTeam
                                 name="123"
                                 balance={100}
@@ -42,12 +43,11 @@ export const ProfilePage: FC<ProfilePageProps> = () => {
                             />
                         ) : (
                             <div className={styles.enough}>
-                                {/* Ты не в команде, создай (пригласи сам) или жди
-                                приглашения! Твои приглашения ниже */}
-                                :))
+                                Ты не в команде, создай (пригласи сам) или жди
+                                приглашения! Твои приглашения ниже
                             </div>
                         )}
-                    </div>
+                    </div> */}
                     <div className={styles.header1}>
                         <p className={styles.text}>Achivments</p>
                     </div>
