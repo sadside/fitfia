@@ -6,6 +6,11 @@
 }
 
 @font-face {
+  font-family: 'tickingBombRus';
+  src: url('/src/shared/assets/fonts/17320.OTF');
+}
+
+@font-face {
   font-family: 'futureFont';
   src: url('/src/shared/assets/fonts/mikratos.ttf');
 }
@@ -33,10 +38,6 @@ body {
   height: 100%;
   color: #fff;
   overflow: hidden;
-}
-
-* {
-  font-family: 'PT Mono', sans-serif !important;
 }
 
 .Toastify__toast-theme--dark {

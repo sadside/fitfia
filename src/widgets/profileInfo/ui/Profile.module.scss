@@ -1,12 +1,11 @@
-
 .light{
   background: none;
   color: #FFC700;
   text-shadow: 0 0 20px #FFC700;
 }
-.regText{
-  color: #ffffff;
-}
+// .regText{
+//   color: #ffffff;
+// }
 .fullProfile{
   display: flex;
   justify-content: flex-start;
@@ -25,14 +24,17 @@
 }
 .nick, .team, .balance {
   color: #FFC700;
-  font-size: 32px;
-  font-family: 'futureFont';
+  font-family: 'tickingBomb';
+  font-size: 64px;
   text-transform: uppercase;
 }
+
 .level, .currentTeam, .currentBalance {
-  color: #ffffff;
-  font-size: 32px;
   font-family: 'tickingBomb';
+  color: #ffffff;
+  
+  font-size: 48px;
+  
   text-decoration: none;
 }
 .line{

@@ -19,11 +19,15 @@
 .taskTitle{
     color: rgba(255, 199 , 0);
     font-size: 42px;
-    font-family: 'pixy';
     margin: 20px;
+    margin-left: 30px;
+    font-family: "tickingBombRus";
+    // margin-left: 16px;
+
 }
 .description{
-    font-size: 28px;
+    font-size: 40px;
+    margin-left: 16px;
     width: 98%;
     overflow-wrap: break-word;
     white-space: normal;
@@ -36,13 +40,15 @@
 }
 .answTxt {
     color: #FFF;
-    font-family: 'pixy', 'serif';
+    font-family: 'tickingBombRus', 'serif';
     font-size: 50px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
     margin-right: 30px;
     padding-bottom: 6px;
+    margin-left: 16px;
+
 
 }
 .status{
@@ -57,6 +63,12 @@
     color: #ffffff;
     font-size: 48px;
     font-family: 'tickingBomb';
+    margin-left: 16px;
+
+}
+a{
+    font-family: serif;
+    color: #B3B3B3;
 }
 .cont {
     margin: 0;

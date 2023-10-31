@@ -37,7 +37,7 @@ export const Profile = ({}: ProfileProps) => {
                             {user?.content.points ? user?.content.points : 0}
                         </div>
                     </div>
-                    <div className={styles.line}></div>
+                    {/* <div className={styles.line}></div>
                     <div className={`${styles.fullTeam} ${styles.profileItem}`}>
                         <div className={styles.team}>TEAM</div>
                         <div
@@ -52,7 +52,7 @@ export const Profile = ({}: ProfileProps) => {
                                 </Link>
                             )}
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>
