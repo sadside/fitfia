@@ -83,7 +83,7 @@ export const ProfilePage: FC<ProfilePageProps> = () => {
                 <div className={styles.rightColumn}>
                     <div className={styles.header1}>
                         <p className={styles.text}>
-                            Rating. У каждого факультета разные задания и баллы.{' '}
+                            Rating. У факультетов разные задания и баллы.{' '}
                         </p>
                     </div>
                     <div className={styles.rateHolder}>
