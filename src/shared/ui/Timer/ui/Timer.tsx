@@ -1,16 +1,26 @@
 import styles from './Timer.module.scss';
+import {createTimeModel, useTimeModel} from 'react-compound-timer';
 
 interface TimerProps {
     className?: string;
     date: string;
 }
 
+const timer = createTimeModel({
+    initialTime: Date.parse('03 Nov 2023 00:00:00 GMT+7') - Date.now(),
+    direction: 'backward',
+});
+
 export const Timer = ({}: TimerProps) => {
-    const days = (Date.parse('11-10-2023') - Date.now()) / 86400000;
-    const hours = days - Math.floor(days);
+    const {value} = useTimeModel(timer);
 
-    console.log(days);
-    console.log(hours / 36);
-
-    return <div className={styles.wrapper}></div>;
+    return (
+        <div className={styles.wrapper}>
+            <div
+                className={
+                    styles.numbers
+                }>{`${value.h}-${value.m}-${value.s}`}</div>
+            <div className={styles.text}>до конца этапа</div>
+        </div>
+    );
 };

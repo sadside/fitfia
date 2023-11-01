@@ -11,8 +11,7 @@ import {toast} from 'react-toastify';
 import {ANSWER_TYPES, TASK_STATUSES} from 'src/entities/Task/taskModel.ts';
 import {useNavigate} from 'react-router-dom';
 import FormattedMessage from 'src/shared/ui/formatted-message/FormattedMessage.tsx';
-
-// import {ANSWER_TYPES} from 'src/entities/Task/taskModel.ts';
+import {AnimatePresence, motion} from 'framer-motion';
 
 interface TaskPageProps {
     className?: string;
@@ -28,7 +27,6 @@ export const TaskPage: FC<TaskPageProps> = ({}: TaskPageProps) => {
 
     const task = useAppSelector(state => state.tasks.fullTask);
     const status = useAppSelector(state => state.tasks.status);
-    // if (task) task.answerType = ANSWER_TYPES.MANUAL;
 
     const [selectedFile, setSelectedFile] = useState<File>();
     const navigate = useNavigate();
@@ -40,24 +38,49 @@ export const TaskPage: FC<TaskPageProps> = ({}: TaskPageProps) => {
     };
 
     const [answer, setAnswer] = useState('');
+    const [timer, setTimer] = useState(false);
+    const [showed, setShowed] = useState(false);
 
     const handleSubmit = () => {
-        if (task?.answerType === ANSWER_TYPES.MANUAL) {
-            if (selectedFile && task) {
-                const data = new FormData();
-                data.append('file', selectedFile);
+        if (!timer) {
+            setTimer(true);
+            setTimeout(() => {
+                setTimer(false);
+            }, 5000);
 
-                dispatch(
-                    sendAnswerFileThunk({data: data, id: task.taskInfo.id})
-                );
+            if (task?.answerType === ANSWER_TYPES.MANUAL) {
+                if (selectedFile && task) {
+                    const data = new FormData();
+                    data.append('file', selectedFile);
+
+                    dispatch(
+                        sendAnswerFileThunk({data: data, id: task.taskInfo.id})
+                    ).then(() => {
+                        if (!showed) {
+                            toast.error(
+                                'Да бы избежать подбора ответов, форма будет блокироваться на 5 сек после отправки. Удачного брутфорса)'
+                            );
+                            setShowed(true);
+                        }
+                    });
+                } else {
+                    toast.error('Загрузи файл');
+                }
             } else {
-                toast.error('Загрузи файл');
-            }
-        } else {
-            if (answer.length && task)
-                dispatch(sendAnswerThunk({answer, id: task.taskInfo.id}));
+                if (answer.length && task)
+                    dispatch(
+                        sendAnswerThunk({answer, id: task.taskInfo.id})
+                    ).then(() => {
+                        if (!showed) {
+                            toast.error(
+                                'Да бы избежать подбора ответов, форма будет блокироваться на 5 сек после отправки. Удачного брутфорса)'
+                            );
+                            setShowed(true);
+                        }
+                    });
 
-            setAnswer('');
+                setAnswer('');
+            }
         }
     };
 
@@ -69,8 +92,8 @@ export const TaskPage: FC<TaskPageProps> = ({}: TaskPageProps) => {
         <div className={styles.curTaskFull}>
             <div className={styles.header}>
                 <p className={styles.taskTitle}>{task?.taskInfo.title}</p>
-                <div className={styles.border}></div>
             </div>
+            <div className={styles.border}></div>
             {status === 'loading full task' && !task && (
                 <div style={{height: 200}}>
                     <Loader height={50} width={50} />
@@ -91,22 +114,34 @@ export const TaskPage: FC<TaskPageProps> = ({}: TaskPageProps) => {
                                     {task?.content}
                                 </FormattedMessage>
                             </div>
+                            <hr />
                             {task.taskInfo.status !==
                                 TASK_STATUSES.COMPLETED && (
                                 <div className={styles.price}>
-                                    PRICE: {task?.taskInfo.potentialPoints}
+                                    Награда за выполнение:{' '}
+                                    <span className={styles.priceValue}>
+                                        {task?.taskInfo.potentialPoints}
+                                    </span>
                                 </div>
                             )}
-                            {task.taskInfo.status ===
-                                TASK_STATUSES.COMPLETED && (
-                                <div className={styles.done}>
-                                    Задание выполнено
-                                </div>
-                            )}
+                            <AnimatePresence>
+                                {task.taskInfo.status ===
+                                    TASK_STATUSES.COMPLETED && (
+                                    <motion.div
+                                        initial={{opacity: 0}}
+                                        animate={{opacity: 1}}
+                                        exit={{opacity: 0}}
+                                        transition={{duration: 0.4, delay: 0.2}}
+                                        className={styles.done}>
+                                        Задание выполнено ✅
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+
                             {task.taskInfo.status ===
                                 TASK_STATUSES.AVAILABLE && (
                                 <div className={styles.cunt}>
-                                    <div className={styles.answTxt}>ОТВЕТ:</div>
+                                    <div className={styles.answTxt}>Ответ:</div>
 
                                     {task.answerType === ANSWER_TYPES.MANUAL ? (
                                         <>
@@ -129,20 +164,32 @@ export const TaskPage: FC<TaskPageProps> = ({}: TaskPageProps) => {
                                     ) : (
                                         <input
                                             className={styles.answer}
+                                            disabled={timer}
                                             onChange={(
                                                 e: ChangeEvent<HTMLInputElement>
                                             ) => setAnswer(e.target.value)}
                                             value={answer}
                                         />
                                     )}
-                                    {(selectedFile || answer) && (
-                                        <button
-                                            type="submit"
-                                            className={styles.answerButt}
-                                            onClick={handleSubmit}>
-                                            send
-                                        </button>
-                                    )}
+                                    <AnimatePresence>
+                                        {(selectedFile || answer) && (
+                                            <motion.button
+                                                type="submit"
+                                                className={styles.answerButt}
+                                                onClick={handleSubmit}
+                                                initial={{
+                                                    opacity: 0,
+                                                    y: 10,
+                                                }}
+                                                animate={{opacity: 1, y: 0}}
+                                                exit={{opacity: 0, y: 10}}
+                                                transition={{
+                                                    duration: 0.3,
+                                                }}>
+                                                Отправить
+                                            </motion.button>
+                                        )}
+                                    </AnimatePresence>
                                 </div>
                             )}
                         </div>

@@ -19,7 +19,7 @@ export const Task = ({title, status, points, id}: ProfileProps) => {
                 ) : (
                     <div className={styles.taskHeader}>{title}</div>
                 )}
-                <div className={styles.taskHeader}></div>
+                <hr className={styles.hr} />
                 <div className={styles.taskStatus}>{status}</div>
                 {status === 'AVAILABLE' && (
                     <div className={styles.taskPrice}>Price: {points}</div>

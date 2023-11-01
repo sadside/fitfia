@@ -12,7 +12,6 @@ interface ProfilePageProps {
 }
 
 export const ProfilePage: FC<ProfilePageProps> = () => {
-    // const team = useAppSelector(state => state.team.teamInfo);
     const rating = useAppSelector(state => state.rating.rating);
 
     const achievements = useAppSelector(
@@ -83,7 +82,9 @@ export const ProfilePage: FC<ProfilePageProps> = () => {
                 </div>
                 <div className={styles.rightColumn}>
                     <div className={styles.header1}>
-                        <p className={styles.text}>Rating</p>
+                        <p className={styles.text}>
+                            Rating. У каждого факультета разные задания и баллы.{' '}
+                        </p>
                     </div>
                     <div className={styles.rateHolder}>
                         <div className={styles.rateScroll}>

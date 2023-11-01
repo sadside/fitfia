@@ -1,6 +1,6 @@
 .taskHeader{
   color: #FFC700;
-  font-size: 40px;
+  font-size: 2.5rem;
   text-decoration: none;
   font-family: "tickingBombRus";
 
@@ -8,18 +8,25 @@
 .taskDescription{
   align-self: flex-start;
   color: #ffffff;
-  font-size: 24px;
+  font-size: 1.5rem;
   font-family: 'serif';
 }
 .taskPrice{
   color: #ffffff;
-  font-size: 40px;
-  font-family: "tickingBombRus";
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-family: 'PT mono', 'serif';
+  margin-top: 10px;
 }
+.hr {
+  margin: 7px 0 10px 0;
+  width: 100% !important;
+}
+
 .taskStatus{
   color: #B3B3B3;
-  font-size: 28px;
-  font-family: 'PT mono';
+  font-size: 1.5rem;
+  font-family: 'PT mono', 'serif';
 }
 .task{
   border-radius: 11px;

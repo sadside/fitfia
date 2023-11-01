@@ -42,7 +42,7 @@ export const LoginPage: FC<RegisterPageProps> = ({}) => {
                 <div className={styles.authLine}></div>
                 <div className={styles.authtextContainer}>
                     <p className={`${styles.authText} ${styles.regText}`}>
-                        BAC ПРИВУЕСТВУЕТ УМНЫЙ<br></br> ПОМОЩНИК
+                        BAC ПРИВЕТСТВУЕТ УМНЫЙ<br></br> ПОМОЩНИК
                         <span className={styles.light}> ВИТАЛИЙ!</span>
                         <br />
                         ВЫ УЖЕ МЕРТВЫ!
@@ -99,12 +99,18 @@ export const LoginPage: FC<RegisterPageProps> = ({}) => {
                             )}
                         </div>
                         <div className={styles.butts}>
-                            <button type="submit" className={styles.authLoginButton}>
-                                <Link to={"/registration"} className={styles.buttText}>НЕТ АККА? СОЗДАЙ!</Link>
-                            </button>  
+                            <button
+                                type="submit"
+                                className={styles.authLoginButton}>
+                                <Link
+                                    to={'/registration'}
+                                    className={styles.buttText}>
+                                    НЕТ АККА? СОЗДАЙ!
+                                </Link>
+                            </button>
                             <button className={styles.authLoginButton}>
                                 Войти
-                            </button> 
+                            </button>
                         </div>
                     </div>
                 </div>

@@ -39,7 +39,7 @@ export const ConfirmCodePage: FC<RegisterPageProps> = ({}) => {
                 <div className={styles.authLine}></div>
                 <div className={styles.authtextContainer}>
                     <p className={`${styles.authText} ${styles.regText}`}>
-                        BAC ПРИВУЕСТВУЕТ УМНЫЙ<br></br> ПОМОЩНИК
+                        BAC ПРИВЕТСТВУЕТ УМНЫЙ<br></br> ПОМОЩНИК
                         <span className={styles.light}> ВИТАЛИЙ!</span>
                         <br />
                         ВЫ СТАЛИ НА ШАГ БЛИЖЕ К ПОКОЮ!

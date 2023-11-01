@@ -8,6 +8,7 @@ import {BrowserRouter} from 'react-router-dom';
 
 const store = configureStore({
     reducer: rootReducer,
+    devTools: false,
 });
 
 export type RootState = ReturnType<typeof store.getState>;

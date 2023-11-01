@@ -16,24 +16,30 @@ export const Sidebar = ({}: SidebarProps) => {
 
     return (
         <ul className={styles.optionList}>
-            <li className={styles.optionListItem}>
-                <NavLink to="/" onMouseEnter={play} className={setActive}>
-                    Задания
-                </NavLink>
-            </li>
-            <li className={styles.optionListItem}>
-                <NavLink to="/news" onMouseEnter={play} className={setActive}>
-                    Новости
-                </NavLink>
-            </li>
-            <li className={styles.optionListItem}>
-                <NavLink
-                    to="/profile"
-                    onMouseEnter={play}
-                    className={setActive}>
-                    Профиль
-                </NavLink>
-            </li>
+            <div style={{height: 100}}></div>
+            <div>
+                <li className={styles.optionListItem}>
+                    <NavLink to="/" onMouseEnter={play} className={setActive}>
+                        Задания
+                    </NavLink>
+                </li>
+                <li className={styles.optionListItem}>
+                    <NavLink
+                        to="/news"
+                        onMouseEnter={play}
+                        className={setActive}>
+                        Новости
+                    </NavLink>
+                </li>
+                <li className={styles.optionListItem}>
+                    <NavLink
+                        to="/profile"
+                        onMouseEnter={play}
+                        className={setActive}>
+                        Профиль
+                    </NavLink>
+                </li>
+            </div>
             <Timer date={''} />
         </ul>
     );
