@@ -12,6 +12,7 @@ import {ANSWER_TYPES, TASK_STATUSES} from 'src/entities/Task/taskModel.ts';
 import {useNavigate} from 'react-router-dom';
 import FormattedMessage from 'src/shared/ui/formatted-message/FormattedMessage.tsx';
 import {AnimatePresence, motion} from 'framer-motion';
+import {resetCurrentTask} from 'src/entities/Task/taskSLice.ts';
 
 interface TaskPageProps {
     className?: string;
@@ -23,6 +24,10 @@ export const TaskPage: FC<TaskPageProps> = ({}: TaskPageProps) => {
     useEffect(() => {
         const id = +window.location.pathname.replace('/task/', '');
         dispatch(getTaskByIdThunk(id));
+
+        return () => {
+            dispatch(resetCurrentTask());
+        };
     }, []);
 
     const task = useAppSelector(state => state.tasks.fullTask);

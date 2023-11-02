@@ -46,6 +46,9 @@ const tasksSlice = createSlice({
         setCurrentMenuStage: (state, action: PayloadAction<CLIENT_STAGES>) => {
             state.menuCurrentStage = action.payload;
         },
+        resetCurrentTask: state => {
+            state.fullTask = null;
+        },
     },
     extraReducers: builder => {
         builder.addCase(getTasksThunk.fulfilled, (state, action) => {
@@ -122,5 +125,5 @@ const tasksSlice = createSlice({
     },
 });
 
-export const {setCurrentMenuStage} = tasksSlice.actions;
+export const {setCurrentMenuStage, resetCurrentTask} = tasksSlice.actions;
 export default tasksSlice.reducer;

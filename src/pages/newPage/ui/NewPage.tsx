@@ -3,6 +3,7 @@ import {useAppDispatch, useAppSelector} from 'src/shared/utils/hooks/redux.ts';
 import {useEffect} from 'react';
 import {getNewByIdThunk} from 'src/entities/News/newsThunks.ts';
 import {Loader} from 'src/shared/ui/Loader';
+import {resetNew} from 'src/entities/News/newsSlice.ts';
 
 export const NewPage = () => {
     const newItem = useAppSelector(state => state.news.currentNew);
@@ -11,7 +12,11 @@ export const NewPage = () => {
 
     useEffect(() => {
         const id = +window.location.pathname.replace('/news/', '');
+
         dispatch(getNewByIdThunk(id));
+        return () => {
+            dispatch(resetNew());
+        };
     }, []);
 
     return (

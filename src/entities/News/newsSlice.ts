@@ -19,7 +19,11 @@ const initialState: initialState = {
 const newsSlice = createSlice({
     name: 'news',
     initialState,
-    reducers: {},
+    reducers: {
+        resetNew: state => {
+            state.currentNew = null;
+        },
+    },
     extraReducers: builder => {
         builder.addCase(getNewsThunk.fulfilled, (state, action) => {
             state.news = action.payload;
@@ -37,3 +41,4 @@ const newsSlice = createSlice({
 });
 
 export default newsSlice.reducer;
+export const {resetNew} = newsSlice.actions;

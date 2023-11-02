@@ -5,7 +5,7 @@ import {BackendError} from 'src/app/types/global.ts';
 import {getErrorMessage} from 'src/shared/utils/api';
 import {Stage} from 'src/entities/Stage/stageModel.ts';
 
-export const getStageInfoThunk = createAsyncThunk<
+export const getStageInfoThunk1 = createAsyncThunk<
     Stage,
     void,
     {rejectValue: string}

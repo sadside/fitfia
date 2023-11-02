@@ -1,8 +1,5 @@
 import styles from './Timer.module.scss';
 import {createTimeModel, useTimeModel} from 'react-compound-timer';
-import {useAppDispatch} from 'src/shared/utils/hooks/redux.ts';
-import {useEffect} from 'react';
-import {getStageInfoThunk} from 'src/entities/Stage/stageThunks.ts';
 
 interface TimerProps {
     className?: string;
@@ -15,12 +12,6 @@ const timer = createTimeModel({
 });
 
 export const Timer = ({}: TimerProps) => {
-    const dispatch = useAppDispatch();
-
-    useEffect(() => {
-        dispatch(getStageInfoThunk());
-    }, []);
-
     const {value} = useTimeModel(timer);
     // const endDate = useAppSelector(state => state.stage.currentStage?.endDate);
 
