@@ -1,6 +1,6 @@
 import styles from './ProfilePage.module.scss';
 import {FC, useEffect} from 'react';
-import {Achivment} from 'src/widgets/achivment/ui/Achivment.tsx';
+import {Achievement} from 'src/widgets/achivment/ui/Achievement.tsx';
 import {Team} from 'src/widgets/team/ui/Team.tsx';
 import {useAppDispatch, useAppSelector} from 'src/shared/utils/hooks/redux.ts';
 import {getUsersRatingThunks} from 'src/entities/Rating/ratingThunks.ts';
@@ -23,6 +23,7 @@ export const ProfilePage: FC<ProfilePageProps> = () => {
     // );
 
     const status = useAppSelector(state => state.rating.status);
+    const userStatus = useAppSelector(state => state.user.status);
 
     const dispatch = useAppDispatch();
 
@@ -61,10 +62,10 @@ export const ProfilePage: FC<ProfilePageProps> = () => {
                     </div>
                     <div className={styles.achivmentHolder}>
                         <div className={styles.achScroll}>
-                            {achievements?.length ? (
+                            {userStatus === 'idle' && achievements?.length ? (
                                 achievements.map(item => {
                                     return (
-                                        <Achivment
+                                        <Achievement
                                             key={item.title}
                                             description={item.description}
                                             image={item.image}
@@ -76,6 +77,9 @@ export const ProfilePage: FC<ProfilePageProps> = () => {
                                 <div className={styles.notAch}>
                                     Нет достижений
                                 </div>
+                            )}
+                            {status === 'loading user info' && (
+                                <Loader width={50} height={50} />
                             )}
                         </div>
                     </div>
@@ -89,9 +93,10 @@ export const ProfilePage: FC<ProfilePageProps> = () => {
                     <div className={styles.rateHolder}>
                         <div className={styles.rateScroll}>
                             {status === 'idle' &&
-                                rating.map(user => {
+                                rating.map((user, index) => {
                                     return (
                                         <Team
+                                            position={index + 1}
                                             name={user.name}
                                             score={user.score}
                                         />

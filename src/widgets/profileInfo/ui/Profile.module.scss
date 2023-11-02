@@ -11,6 +11,22 @@
   justify-content: flex-start;
   align-items: flex-start;
 }
+
+.editIcon {
+  height: 30px !important;
+  width: 30px !important;
+  cursor: pointer;
+  overflow: hidden;
+  margin-left: 5px;
+  margin-top: 3px;
+}
+
+.popover {
+    font-family: "PT Mono" !important;
+    color: #FFC700;
+
+}
+
 .ava{
   width: 141px;
   height: 141px;
@@ -27,6 +43,8 @@
   font-family: 'tickingBomb';
   font-size: 64px;
   text-transform: uppercase;
+  display: flex;
+  align-items: center;
 }
 
 .level, .currentTeam, .currentBalance {

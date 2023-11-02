@@ -1,1 +1,1 @@
-export {Achivment} from './ui/Achivment.tsx';
+export {Achievement} from './ui/Achievement.tsx';

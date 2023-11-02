@@ -15,32 +15,37 @@ export const Sidebar = ({}: SidebarProps) => {
     const setActive = ({isActive}: any) => isActive && `${styles.active}`;
 
     return (
-        <ul className={styles.optionList}>
-            <div style={{height: 100}}></div>
-            <div>
-                <li className={styles.optionListItem}>
-                    <NavLink to="/" onMouseEnter={play} className={setActive}>
-                        Задания
-                    </NavLink>
-                </li>
-                <li className={styles.optionListItem}>
-                    <NavLink
-                        to="/news"
-                        onMouseEnter={play}
-                        className={setActive}>
-                        Новости
-                    </NavLink>
-                </li>
-                <li className={styles.optionListItem}>
-                    <NavLink
-                        to="/profile"
-                        onMouseEnter={play}
-                        className={setActive}>
-                        Профиль
-                    </NavLink>
-                </li>
-            </div>
-            <Timer date={''} />
-        </ul>
+        <>
+            <ul className={styles.optionList}>
+                <div style={{height: 100}}></div>
+                <div>
+                    <li className={styles.optionListItem}>
+                        <NavLink
+                            to="/"
+                            onMouseEnter={play}
+                            className={setActive}>
+                            Задания
+                        </NavLink>
+                    </li>
+                    <li className={styles.optionListItem}>
+                        <NavLink
+                            to="/news"
+                            onMouseEnter={play}
+                            className={setActive}>
+                            Новости
+                        </NavLink>
+                    </li>
+                    <li className={styles.optionListItem}>
+                        <NavLink
+                            to="/profile"
+                            onMouseEnter={play}
+                            className={setActive}>
+                            Профиль
+                        </NavLink>
+                    </li>
+                </div>
+                <Timer date={''} />
+            </ul>
+        </>
     );
 };

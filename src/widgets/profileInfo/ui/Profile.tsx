@@ -2,10 +2,19 @@ import styles from './Profile.module.scss';
 import {useAppSelector} from 'src/shared/utils/hooks/redux.ts';
 import {User} from 'src/entities/User/userModel.ts';
 import avatar from 'src/shared/assets/images/ava.jpeg';
+import {EditOutlined} from '@ant-design/icons';
+import {Popover} from 'antd';
 
 interface ProfileProps {
     className?: string;
 }
+
+const content = (
+    <div className={styles.popover}>
+        Ты правда думал, что просто так поменяешь себе имя? Плати шейкели и тебе
+        поменяют, так что беги писать админу))
+    </div>
+);
 
 export const Profile = ({}: ProfileProps) => {
     const user = useAppSelector(state => state.user.user) as User;
@@ -21,7 +30,29 @@ export const Profile = ({}: ProfileProps) => {
                     <div
                         className={`${styles.nicknameAndLevel} ${styles.profileItem}`}>
                         <div className={styles.nick}>
-                            {user.content.userName.username}
+                            <div>{user.content.userName.username}</div>{' '}
+                            <Popover
+                                content={content}
+                                trigger="click"
+                                placement="bottom"
+                                className={styles.popover}
+                                color="#040D12"
+                                style={{
+                                    color: '#fff',
+                                    fontFamily: 'tickingBomb',
+                                }}
+                                overlayInnerStyle={{
+                                    color: '#fff',
+                                    fontSize: 18,
+                                    fontFamily: 'PT Mono',
+                                    width: 250,
+                                }}>
+                                <EditOutlined
+                                    className={styles.editIcon}
+                                    height={40}
+                                    width={40}
+                                />
+                            </Popover>
                         </div>
                         <div className={`${styles.level} ${styles.regText}`}>
                             your iq: {Math.ceil(Math.random() * 40)}
