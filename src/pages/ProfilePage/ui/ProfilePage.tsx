@@ -5,7 +5,7 @@ import {Team} from 'src/widgets/team/ui/Team.tsx';
 import {useAppDispatch, useAppSelector} from 'src/shared/utils/hooks/redux.ts';
 import {getUsersRatingThunks} from 'src/entities/Rating/ratingThunks.ts';
 import {Loader} from 'src/shared/ui/Loader';
-// import {getTeamInfoThunk} from 'src/entities/Team/teamThunks.ts';
+import {getStageInfoThunk} from 'src/entities/Stage/stageThunks.ts';
 
 interface ProfilePageProps {
     className?: string;
@@ -29,6 +29,7 @@ export const ProfilePage: FC<ProfilePageProps> = () => {
 
     useEffect(() => {
         dispatch(getUsersRatingThunks());
+        dispatch(getStageInfoThunk());
         // dispatch(getTeamInfoThunk());
     }, []);
 
@@ -96,6 +97,7 @@ export const ProfilePage: FC<ProfilePageProps> = () => {
                                 rating.map((user, index) => {
                                     return (
                                         <Team
+                                            key={index}
                                             position={index + 1}
                                             name={user.name}
                                             score={user.score}

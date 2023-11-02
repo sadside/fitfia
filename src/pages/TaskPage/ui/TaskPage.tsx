@@ -57,7 +57,7 @@ export const TaskPage: FC<TaskPageProps> = ({}: TaskPageProps) => {
                         sendAnswerFileThunk({data: data, id: task.taskInfo.id})
                     ).then(() => {
                         if (!showed) {
-                            toast.error(
+                            toast.info(
                                 'Дабы избежать подбора ответов, форма будет блокироваться на 5 сек после отправки. Удачного брутфорса)'
                             );
                             setShowed(true);
@@ -72,7 +72,7 @@ export const TaskPage: FC<TaskPageProps> = ({}: TaskPageProps) => {
                         sendAnswerThunk({answer, id: task.taskInfo.id})
                     ).then(() => {
                         if (!showed) {
-                            toast.error(
+                            toast.info(
                                 'Да бы избежать подбора ответов, форма будет блокироваться на 5 сек после отправки. Удачного брутфорса)'
                             );
                             setShowed(true);
