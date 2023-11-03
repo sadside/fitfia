@@ -7,7 +7,7 @@ interface TimerProps {
 }
 
 const timer = createTimeModel({
-    initialTime: Date.parse('04 Nov 2023 00:00:00 GMT+7') - Date.now(),
+    initialTime: Date.parse('06 Nov 2023 00:00:00 GMT+7') - Date.now(),
     direction: 'backward',
 });
 
