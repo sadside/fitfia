@@ -21,7 +21,7 @@ function App() {
         dispatch(getTeamInfoThunk());
     }, []);
 
-    if (user && user.content.points < 6)
+    if (user && user.content.points <= 6)
         return (
             <div
                 style={{

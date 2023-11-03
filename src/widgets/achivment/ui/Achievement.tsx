@@ -7,9 +7,7 @@ export const Achievement: FC<ach> = ({title, image}) => {
         <div className={styles.achivment}>
             <div className={styles.header}>{title}</div>
             <img
-                src={`${
-                    import.meta.env.BASE_URL
-                }public/achievements/${image}.png`}
+                src={`./achievements/${image}.png`}
                 alt="Аватарка"
                 className={styles.achievmentImage}
             />
