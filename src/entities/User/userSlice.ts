@@ -15,6 +15,7 @@ type initialState = {
     isAuth: boolean;
     showCodeInput: boolean;
     status: string;
+    isBanned: boolean;
 };
 
 const initialState: initialState = {
@@ -22,6 +23,7 @@ const initialState: initialState = {
     isAuth: false,
     showCodeInput: false,
     status: 'loading user info',
+    isBanned: false,
 };
 
 const userSlice = createSlice({

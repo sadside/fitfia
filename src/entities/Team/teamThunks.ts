@@ -79,9 +79,10 @@ export const acceptInviteThunk = createAsyncThunk<
     void,
     number,
     {rejectValue: string}
->('team/acceptInviteThunk', async (id, {rejectWithValue}) => {
+>('team/acceptInviteThunk', async (id, {rejectWithValue, dispatch}) => {
     try {
         const res = await respondUserInvitation(id);
+        await dispatch(getTeamInfoThunk());
 
         return res.data;
     } catch (e: unknown | AxiosError<BackendError>) {

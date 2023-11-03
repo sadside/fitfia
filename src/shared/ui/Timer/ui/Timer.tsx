@@ -13,6 +13,7 @@ const timer = createTimeModel({
 
 export const Timer = ({}: TimerProps) => {
     const {value} = useTimeModel(timer);
+
     // const endDate = useAppSelector(state => state.stage.currentStage?.endDate);
 
     const days = value.d ? `${value.d}-` : '';

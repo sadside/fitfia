@@ -4,6 +4,7 @@ import {User} from 'src/entities/User/userModel.ts';
 import avatar from 'src/shared/assets/images/ava.jpeg';
 import {EditOutlined} from '@ant-design/icons';
 import {Popover} from 'antd';
+import {Link} from 'react-router-dom';
 
 interface ProfileProps {
     className?: string;
@@ -18,7 +19,7 @@ const content = (
 
 export const Profile = ({}: ProfileProps) => {
     const user = useAppSelector(state => state.user.user) as User;
-    // const team = useAppSelector(state => state.team?.teamInfo);
+    const team = useAppSelector(state => state.team?.teamInfo);
 
     return (
         <div className={styles.profileInfo}>
@@ -67,13 +68,15 @@ export const Profile = ({}: ProfileProps) => {
                             {user?.content.points ? user?.content.points : 0}
                         </div>
                     </div>
-                    {/* <div className={styles.line}></div>
+                    <div className={styles.line}></div>
                     <div className={`${styles.fullTeam} ${styles.profileItem}`}>
                         <div className={styles.team}>TEAM</div>
                         <div
                             className={`${styles.currentTeam} ${styles.regText}`}>
                             {team?.team_name ? (
-                                team.team_name
+                                <div className={styles.teamName}>
+                                    {team.team_name}
+                                </div>
                             ) : (
                                 <Link
                                     to="/create-team"
@@ -82,7 +85,7 @@ export const Profile = ({}: ProfileProps) => {
                                 </Link>
                             )}
                         </div>
-                    </div> */}
+                    </div>
                 </div>
             </div>
         </div>

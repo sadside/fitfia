@@ -6,6 +6,7 @@ import {
     getInvitationsThunk,
     inviteUserThunk,
 } from 'src/entities/Team/teamThunks.ts';
+import {useNavigate} from 'react-router-dom';
 
 // type FormValues = {
 //     email: string;
@@ -16,6 +17,8 @@ export const CreateTeamPage = () => {
 
     const invitations = useAppSelector(state => state.team.invitations);
     const show = useAppSelector(state => state.team.show);
+    const team = useAppSelector(state => state.team.teamInfo);
+
     const [email, setEmail] = useState('');
 
     useEffect(() => {
@@ -25,6 +28,11 @@ export const CreateTeamPage = () => {
     const handleSubmit = () => {
         dispatch(inviteUserThunk(email));
     };
+
+    const navigate = useNavigate();
+
+    if (team) navigate('/');
+
     if (!show)
         return (
             <div>Вы в команде, информация о команде находится в профиле</div>
@@ -64,7 +72,14 @@ export const CreateTeamPage = () => {
                                 );
                             })
                         ) : (
-                            <div>Приглашений нет</div>
+                            <div
+                                style={{
+                                    textAlign: 'center',
+                                    fontSize: 32,
+                                    marginTop: 20,
+                                }}>
+                                Приглашений нет
+                            </div>
                         )}
                     </div>
                 </div>

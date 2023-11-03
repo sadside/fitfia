@@ -6,6 +6,7 @@ import {useAppDispatch, useAppSelector} from 'src/shared/utils/hooks/redux.ts';
 import {getUsersRatingThunks} from 'src/entities/Rating/ratingThunks.ts';
 import {Loader} from 'src/shared/ui/Loader';
 import {getStageInfoThunk1} from 'src/entities/Stage/stageThunks.ts';
+import {CurrentTeam} from 'src/widgets/currentTeam/ui/currentTeam.tsx';
 
 interface ProfilePageProps {
     className?: string;
@@ -18,9 +19,11 @@ export const ProfilePage: FC<ProfilePageProps> = () => {
         state => state?.user?.user?.content.achievements
     );
 
-    // const email = useAppSelector(
-    //     state => state?.user?.user?.content.userName.email
-    // );
+    const team = useAppSelector(state => state.team.teamInfo);
+
+    const email = useAppSelector(
+        state => state?.user?.user?.content.userName.email
+    );
 
     const status = useAppSelector(state => state.rating.status);
     const userStatus = useAppSelector(state => state.user.status);
@@ -38,17 +41,14 @@ export const ProfilePage: FC<ProfilePageProps> = () => {
             <div className={styles.profileSquares}>
                 <div className={styles.leftColumn}>
                     <div className={styles.teamHolder}>
-                        Здесь будет отображаться информация о твоей команде, на
-                        данном этапе добавление в команды недоступно, жди
-                        новостей!
-                        {/* {team?.team_name ? (
+                        {team?.team_name ? (
                             <CurrentTeam
                                 name={team.team_name}
                                 balance={0}
                                 copilot={
                                     team.members.filter(
                                         item => item.email !== email
-                                    )[0].email
+                                    )[0].username
                                 }
                             />
                         ) : (
@@ -56,7 +56,7 @@ export const ProfilePage: FC<ProfilePageProps> = () => {
                                 Ты не в команде, создай (пригласи сам) или жди
                                 приглашения! Твои приглашения ниже
                             </div>
-                        )} */}
+                        )}
                     </div>
                     <div className={styles.header1}>
                         <p className={styles.text}>Achievements</p>
