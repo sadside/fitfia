@@ -16,8 +16,17 @@ export const PotentialTeammate = ({
             <div className={styles.email}>{email}</div>
             <button
                 className={styles.butt}
-                onClick={() => dispatch(acceptInviteThunk(id))}>
-                беру
+                onClick={() =>
+                    dispatch(acceptInviteThunk({id, action: 'ACCEPT'}))
+                }>
+                Беру
+            </button>
+            <button
+                className={styles.butt}
+                onClick={() =>
+                    dispatch(acceptInviteThunk({id, action: 'CANCEL'}))
+                }>
+                Отклоняю
             </button>
         </div>
     );

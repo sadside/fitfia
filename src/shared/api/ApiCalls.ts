@@ -124,11 +124,11 @@ export const inviteUserToTeam = (data: string) =>
         getUserTokenHeader()
     );
 
-export const respondUserInvitation = (data: number) =>
+export const respondUserInvitation = (data: number, action: string) =>
     axios.post(
         createApiCall('/team/invitations/respond'),
         {
-            action: 'ACCEPT',
+            action: action,
             id: data,
         },
         getUserTokenHeader()

@@ -16,12 +16,13 @@ function App() {
     const user = useAppSelector(state => state?.user.user);
 
     useEffect(() => {
-        if (getToken()) dispatch(getUserInfoThunk());
-        else dispatch(setStatus('idle'));
-        dispatch(getTeamInfoThunk());
+        if (getToken()) {
+            dispatch(getUserInfoThunk());
+            dispatch(getTeamInfoThunk());
+        } else dispatch(setStatus('idle'));
     }, []);
 
-    if (user && user.content.points <= 6)
+    if (user && user.content.points === 6)
         return (
             <div
                 style={{
