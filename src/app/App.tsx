@@ -1,5 +1,4 @@
 import './styles/index.scss';
-// import {Outlet} from "react-router-dom";
 import {AppRouter} from 'src/app/providers/router';
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -22,7 +21,7 @@ function App() {
         } else dispatch(setStatus('idle'));
     }, []);
 
-    if (user && user.content.points === 6)
+    if (user && user.content.points < 6)
         return (
             <div
                 style={{

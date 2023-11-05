@@ -92,7 +92,7 @@ export const getTeamInvitations = () =>
 
 export const getUsersRating = (type: string) =>
     axios.get(
-        createApiCall(`/statistic/rating/users?sortingType=${type}`),
+        createApiCall(`/statistic/rating/teams?sortingType=${type}`),
         getUserTokenHeader()
     );
 
