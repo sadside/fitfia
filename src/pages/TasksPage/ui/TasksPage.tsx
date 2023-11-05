@@ -58,7 +58,8 @@ export const TasksPage: FC<TasksPageProps> = () => {
                 <div className={styles.scroll}>
                     {status === 'loading' && <Loader width={60} height={60} />}
                     {status === 'error' && <div>Произошла ошибка :(</div>}
-                    {tasks[clientStage]?.length &&
+                    {tasks[clientStage] &&
+                        tasks[clientStage]?.length &&
                         status == 'idle' &&
                         tasks[clientStage].map((task: Task) => {
                             return (
@@ -72,7 +73,7 @@ export const TasksPage: FC<TasksPageProps> = () => {
                             );
                         })}
 
-                    {!tasks[clientStage].length && (
+                    {!tasks[clientStage]?.length && (
                         <div className={styles.locked}>
                             Заданий нет, мы вам перезвоним👋
                             <br />
