@@ -35,6 +35,7 @@ export const TaskPage: FC<TaskPageProps> = ({}: TaskPageProps) => {
 
     const [selectedFile, setSelectedFile] = useState<File>();
     const navigate = useNavigate();
+    const media = useAppSelector(state => state.tasks.media);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         if (event.target.files) {
@@ -93,8 +94,6 @@ export const TaskPage: FC<TaskPageProps> = ({}: TaskPageProps) => {
         navigate('/');
     }
 
-    console.log(task?.content);
-
     return (
         <div className={styles.curTaskFull}>
             <div className={styles.header}>
@@ -111,95 +110,99 @@ export const TaskPage: FC<TaskPageProps> = ({}: TaskPageProps) => {
                 //@ts-ignore
                 onSubmit={(e: SubmitEvent) => {
                     e.preventDefault();
-                }}>
+                }}
+                className={styles.form}>
                 {status !== 'loading full task' && task && (
-                    <div className={styles.cont}>
-                        <div className={styles.container}>
-                            <div className={styles.description}>
-                                {' '}
-                                <FormattedMessage>
-                                    {task?.content.replace('<br>', '')}
-                                </FormattedMessage>
-                            </div>
-                            <hr />
-                            {task.taskInfo.status !==
-                                TASK_STATUSES.COMPLETED && (
-                                <div className={styles.price}>
-                                    Награда за выполнение:{' '}
-                                    <span className={styles.priceValue}>
-                                        {task?.taskInfo.potentialPoints}
-                                    </span>
-                                </div>
-                            )}
-                            <AnimatePresence>
-                                {task.taskInfo.status ===
-                                    TASK_STATUSES.COMPLETED && (
-                                    <motion.div
-                                        initial={{opacity: 0}}
-                                        animate={{opacity: 1}}
-                                        exit={{opacity: 0}}
-                                        transition={{duration: 0.4, delay: 0.2}}
-                                        className={styles.done}>
-                                        Задание выполнено ✅
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
-
-                            {task.taskInfo.status ===
-                                TASK_STATUSES.AVAILABLE && (
-                                <div className={styles.cunt}>
-                                    <div className={styles.answTxt}>Ответ:</div>
-
-                                    {task.answerType === ANSWER_TYPES.MANUAL ? (
-                                        <>
-                                            <label
-                                                className={styles.uploadFile}>
-                                                <input
-                                                    type="file"
-                                                    multiple={false}
-                                                    onChange={handleChange}
-                                                />
-                                                Загрузить файл
-                                            </label>
-                                            <div
-                                                className={styles.uploadedFile}>
-                                                {selectedFile
-                                                    ? selectedFile.name
-                                                    : 'Грузи, не очкуй!'}
-                                            </div>
-                                        </>
-                                    ) : (
-                                        <input
-                                            className={styles.answer}
-                                            disabled={timer}
-                                            onChange={(
-                                                e: ChangeEvent<HTMLInputElement>
-                                            ) => setAnswer(e.target.value)}
-                                            value={answer}
-                                        />
-                                    )}
-                                    <AnimatePresence>
-                                        {(selectedFile || answer) && (
-                                            <motion.button
-                                                type="submit"
-                                                className={styles.answerButt}
-                                                onClick={handleSubmit}
-                                                initial={{
-                                                    opacity: 0,
-                                                    y: 10,
-                                                }}
-                                                animate={{opacity: 1, y: 0}}
-                                                exit={{opacity: 0, y: 10}}
-                                                transition={{
-                                                    duration: 0.3,
-                                                }}>
-                                                Отправить
-                                            </motion.button>
-                                        )}
-                                    </AnimatePresence>
-                                </div>
-                            )}
+                    <div className={styles.container}>
+                        <div className={styles.description}>
+                            {' '}
+                            <FormattedMessage>{task?.content}</FormattedMessage>
                         </div>
+                        <div style={{display: 'flex', marginTop: 20}}>
+                            {media.map((media, index) => {
+                                return (
+                                    <div className={styles.mediaItem}>
+                                        <a href={media.link} target="_blank">
+                                            Медиа {index + 1}
+                                        </a>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                        <hr />
+                        {task.taskInfo.status !== TASK_STATUSES.COMPLETED && (
+                            <div className={styles.price}>
+                                Награда за выполнение:{' '}
+                                <span className={styles.priceValue}>
+                                    {task?.taskInfo.potentialPoints}
+                                </span>
+                            </div>
+                        )}
+                        <AnimatePresence>
+                            {task.taskInfo.status ===
+                                TASK_STATUSES.COMPLETED && (
+                                <motion.div
+                                    initial={{opacity: 0}}
+                                    animate={{opacity: 1}}
+                                    exit={{opacity: 0}}
+                                    transition={{duration: 0.4, delay: 0.2}}
+                                    className={styles.done}>
+                                    Задание выполнено ✅
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+
+                        {task.taskInfo.status === TASK_STATUSES.AVAILABLE && (
+                            <div className={styles.cunt}>
+                                <div className={styles.answTxt}>Ответ:</div>
+
+                                {task.answerType === ANSWER_TYPES.MANUAL ? (
+                                    <>
+                                        <label className={styles.uploadFile}>
+                                            <input
+                                                type="file"
+                                                multiple={false}
+                                                onChange={handleChange}
+                                            />
+                                            Загрузить файл
+                                        </label>
+                                        <div className={styles.uploadedFile}>
+                                            {selectedFile
+                                                ? selectedFile.name
+                                                : 'Грузи, не очкуй!'}
+                                        </div>
+                                    </>
+                                ) : (
+                                    <input
+                                        className={styles.answer}
+                                        disabled={timer}
+                                        onChange={(
+                                            e: ChangeEvent<HTMLInputElement>
+                                        ) => setAnswer(e.target.value)}
+                                        value={answer}
+                                    />
+                                )}
+                                <AnimatePresence>
+                                    {(selectedFile || answer) && (
+                                        <motion.button
+                                            type="submit"
+                                            className={styles.answerButt}
+                                            onClick={handleSubmit}
+                                            initial={{
+                                                opacity: 0,
+                                                y: 10,
+                                            }}
+                                            animate={{opacity: 1, y: 0}}
+                                            exit={{opacity: 0, y: 10}}
+                                            transition={{
+                                                duration: 0.3,
+                                            }}>
+                                            Отправить
+                                        </motion.button>
+                                    )}
+                                </AnimatePresence>
+                            </div>
+                        )}
                     </div>
                 )}
             </form>

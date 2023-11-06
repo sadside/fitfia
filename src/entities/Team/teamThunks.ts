@@ -6,6 +6,7 @@ import {
     editTeamInfo,
     getTeamInfo,
     getTeamInvitations,
+    getTeamPoints,
     inviteUserToTeam,
     respondUserInvitation,
 } from 'src/shared/api/ApiCalls.ts';
@@ -92,3 +93,17 @@ export const acceptInviteThunk = createAsyncThunk<
         }
     }
 );
+
+export const getTeamPointsThunk = createAsyncThunk<
+    number,
+    void,
+    {rejectValue: string}
+>('team/getTeamPointsThunk', async (_, {rejectWithValue}) => {
+    try {
+        const res: AxiosResponse<{points: number}> = await getTeamPoints();
+
+        return res.data.points;
+    } catch (e: unknown | AxiosError<BackendError>) {
+        return rejectWithValue(getErrorMessage(e));
+    }
+});

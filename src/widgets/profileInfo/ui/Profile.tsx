@@ -1,10 +1,12 @@
 import styles from './Profile.module.scss';
-import {useAppSelector} from 'src/shared/utils/hooks/redux.ts';
+import {useAppDispatch, useAppSelector} from 'src/shared/utils/hooks/redux.ts';
 import {User} from 'src/entities/User/userModel.ts';
 import avatar from 'src/shared/assets/images/ava.jpeg';
 import {EditOutlined} from '@ant-design/icons';
 import {Popover} from 'antd';
 import {Link} from 'react-router-dom';
+import {useEffect} from 'react';
+import {getTeamPointsThunk} from 'src/entities/Team/teamThunks.ts';
 
 interface ProfileProps {
     className?: string;
@@ -20,6 +22,13 @@ const content = (
 export const Profile = ({}: ProfileProps) => {
     const user = useAppSelector(state => state.user.user) as User;
     const team = useAppSelector(state => state.team?.teamInfo);
+    const dispatch = useAppDispatch();
+
+    const points = useAppSelector(state => state.team.points);
+
+    useEffect(() => {
+        dispatch(getTeamPointsThunk());
+    }, []);
 
     return (
         <div className={styles.profileInfo}>
@@ -65,7 +74,7 @@ export const Profile = ({}: ProfileProps) => {
                         <div className={styles.balance}>BALANCE</div>
                         <div
                             className={`${styles.currentBalance} ${styles.regText}`}>
-                            {user?.content.points ? user?.content.points : 0}
+                            {points}
                         </div>
                     </div>
                     <div className={styles.line}></div>

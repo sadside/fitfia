@@ -11,6 +11,7 @@ import {BackendError} from 'src/app/types/global.ts';
 import {getErrorMessage} from 'src/shared/utils/api';
 import {FullTask, STAGES, TasksStages} from 'src/entities/Task/taskModel.ts';
 import {incrementUserBalance} from 'src/entities/User/userSlice.ts';
+import {incrementTeamBalance} from 'src/entities/Team/teamSlice.ts';
 
 export const getTasksThunk = createAsyncThunk<
     TasksStages,
@@ -97,7 +98,7 @@ export const sendAnswerThunk = createAsyncThunk<
         const res = await sendAnswer({answer, taskId: id});
 
         if (res.data.message === 'Задание выполнено.') {
-            dispatch(incrementUserBalance(res.data.points));
+            dispatch(incrementTeamBalance(res.data.points));
         }
 
         return res.data;

@@ -1,10 +1,11 @@
 import {Invite, Team} from 'src/entities/Team/teamModel.ts';
-import {createSlice} from '@reduxjs/toolkit';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {
     acceptInviteThunk,
     editTeamThunk,
     getInvitationsThunk,
     getTeamInfoThunk,
+    getTeamPointsThunk,
     inviteUserThunk,
 } from 'src/entities/Team/teamThunks.ts';
 import {toast} from 'react-toastify';
@@ -16,6 +17,7 @@ type initialState = {
         myCurrentInvitation: Invite | null;
     };
     show: boolean;
+    points: number;
 };
 
 const initialState: initialState = {
@@ -25,12 +27,17 @@ const initialState: initialState = {
         myCurrentInvitation: null,
     },
     show: true,
+    points: 0,
 };
 
 const teamSlice = createSlice({
     name: 'team',
     initialState,
-    reducers: {},
+    reducers: {
+        incrementTeamBalance: (state, action: PayloadAction<number>) => {
+            state.points += action.payload;
+        },
+    },
     extraReducers: builder => {
         builder.addCase(getTeamInfoThunk.fulfilled, (state, action) => {
             //@ts-ignore
@@ -64,7 +71,12 @@ const teamSlice = createSlice({
         builder.addCase(acceptInviteThunk.rejected, (_, action) => {
             toast.error(action.payload);
         });
+        builder.addCase(getTeamPointsThunk.fulfilled, (state, action) => {
+            state.points = action.payload;
+        });
     },
 });
+
+export const {incrementTeamBalance} = teamSlice.actions;
 
 export default teamSlice.reducer;

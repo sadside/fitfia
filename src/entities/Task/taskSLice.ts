@@ -23,6 +23,7 @@ type initialState = {
     stageEndDate: string;
     fullTask: FullTask | null;
     hideTask: boolean;
+    media: {link: string}[];
 };
 
 const initialState: initialState = {
@@ -37,6 +38,7 @@ const initialState: initialState = {
     stageEndDate: '',
     fullTask: null,
     hideTask: false,
+    media: [],
 };
 
 const tasksSlice = createSlice({
@@ -48,6 +50,12 @@ const tasksSlice = createSlice({
         },
         resetCurrentTask: state => {
             state.fullTask = null;
+        },
+        addMedia: (state, action: PayloadAction<{link: string}>) => {
+            state.media.push(action.payload);
+        },
+        clearMedia: state => {
+            state.media = [];
         },
     },
     extraReducers: builder => {
@@ -125,5 +133,6 @@ const tasksSlice = createSlice({
     },
 });
 
-export const {setCurrentMenuStage, resetCurrentTask} = tasksSlice.actions;
+export const {setCurrentMenuStage, resetCurrentTask, addMedia, clearMedia} =
+    tasksSlice.actions;
 export default tasksSlice.reducer;
