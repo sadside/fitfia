@@ -8,20 +8,27 @@ const FormattedMessage: React.FC<{children: string}> = ({children}) => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        const text: [] = [];
+        const reg = /\n+/g;
+
+        let text = '';
 
         ref?.current?.childNodes.forEach(node => {
-            //@ts-ignore
-            if (node.nodeName === '#text') text.push(node.wholeText);
+            if (node.textContent.replace(' ', '') === 0) node.remove();
             if (node.nodeName === 'BR') node.remove();
             if (node.nodeName === 'A' && node.textContent) {
                 dispatch(addMedia({link: node.textContent}));
-                node.replaceWith('*Смотри медиа*');
+                node.replaceWith(' *Смотри медиа* ');
             }
         });
 
+        ref?.current?.childNodes.forEach(node => {
+            text += node.textContent;
+        });
+
+        console.log(text);
+
         // @ts-ignore
-        ref.current.textContent = text.join('');
+        ref.current.textContent = text.replace('  ', '');
 
         return () => {
             dispatch(clearMedia());
