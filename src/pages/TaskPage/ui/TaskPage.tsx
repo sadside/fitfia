@@ -93,6 +93,8 @@ export const TaskPage: FC<TaskPageProps> = ({}: TaskPageProps) => {
         navigate('/');
     }
 
+    console.log(task?.content);
+
     return (
         <div className={styles.curTaskFull}>
             <div className={styles.header}>
@@ -116,7 +118,7 @@ export const TaskPage: FC<TaskPageProps> = ({}: TaskPageProps) => {
                             <div className={styles.description}>
                                 {' '}
                                 <FormattedMessage>
-                                    {task?.content}
+                                    {task?.content.replace('<br>', '')}
                                 </FormattedMessage>
                             </div>
                             <hr />
