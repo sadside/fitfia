@@ -8,12 +8,14 @@ const FormattedMessage: React.FC<{children: string}> = ({children}) => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        const reg = /\n+/g;
-
         let text = '';
 
         ref?.current?.childNodes.forEach(node => {
-            if (node.textContent.replace(' ', '') === 0) node.remove();
+            if (
+                node.textContent &&
+                node.textContent.replace(' ', '').length === 0
+            )
+                node.remove();
             if (node.nodeName === 'BR') node.remove();
             if (node.nodeName === 'A' && node.textContent) {
                 dispatch(addMedia({link: node.textContent}));
