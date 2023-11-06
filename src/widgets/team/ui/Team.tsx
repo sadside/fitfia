@@ -11,7 +11,7 @@ export const Team: FC<TeamProps> = ({name, score, position}) => {
     return (
         <div className={styles.team}>
             <div className={styles.name}>{`${position}.${name}`}</div>
-            <div className={styles.balance}>Balance: {score}</div>
+            <div className={styles.balance}>Score: {score}</div>
         </div>
     );
 };
