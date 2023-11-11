@@ -27,6 +27,7 @@ export const ProfilePage: FC<ProfilePageProps> = () => {
 
     const status = useAppSelector(state => state.rating.status);
     const userStatus = useAppSelector(state => state.user.status);
+    const poinsts = useAppSelector(state => state.team.points);
 
     const dispatch = useAppDispatch();
 
@@ -44,7 +45,7 @@ export const ProfilePage: FC<ProfilePageProps> = () => {
                         {team?.team_name ? (
                             <CurrentTeam
                                 name={team.team_name}
-                                balance={0}
+                                balance={poinsts}
                                 copilot={
                                     team.members.filter(
                                         item => item.email !== email
