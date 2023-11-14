@@ -1,9 +1,19 @@
 .taskHeader{
+  * {
+    color: #FFC700;
+    font-size: 2.5rem;
+    text-decoration: none !important;
+    font-family: "tickingBombRus";
+  }
+
   color: #FFC700;
   font-size: 2.5rem;
-  text-decoration: none;
+  text-decoration: none !important;
   font-family: "tickingBombRus";
 
+  a {
+    text-decoration: none !important;
+  }
 }
 .taskDescription{
   align-self: flex-start;

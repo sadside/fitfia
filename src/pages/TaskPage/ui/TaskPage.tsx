@@ -94,10 +94,14 @@ export const TaskPage: FC<TaskPageProps> = ({}: TaskPageProps) => {
         navigate('/');
     }
 
+    // @ts-ignore
     return (
         <div className={styles.curTaskFull}>
             <div className={styles.header}>
-                <p className={styles.taskTitle}>{task?.taskInfo.title}</p>
+                <div className={styles.taskTitle}>
+                    {/*@ts-ignore*/}
+                    <FormattedMessage>{task?.taskInfo.title}</FormattedMessage>
+                </div>
             </div>
             <div className={styles.border}></div>
             {status === 'loading full task' && !task && (

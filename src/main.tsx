@@ -9,7 +9,7 @@ import {ConfigProvider} from 'antd';
 
 const store = configureStore({
     reducer: rootReducer,
-    devTools: false,
+    devTools: true,
 });
 
 export type RootState = ReturnType<typeof store.getState>;
@@ -21,10 +21,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             <ConfigProvider
                 theme={{
                     token: {
-                        // Seed Token
                         colorPrimary: '#00b96b',
                         borderRadius: 2,
-                        // Alias Token
                         colorBgContainer: 'red',
                     },
                 }}>

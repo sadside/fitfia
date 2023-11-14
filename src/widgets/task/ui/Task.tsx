@@ -1,5 +1,6 @@
 import {Link} from 'react-router-dom';
 import styles from './Task.module.scss';
+import FormattedMessage from 'src/shared/ui/formatted-message/FormattedMessage.tsx';
 
 interface ProfileProps {
     title: string;
@@ -14,7 +15,7 @@ export const Task = ({title, status, points, id}: ProfileProps) => {
             <div className={styles.container}>
                 {status === 'AVAILABLE' ? (
                     <Link to={`/task/${id}`} className={styles.taskHeader}>
-                        {title}
+                        <FormattedMessage>{title}</FormattedMessage>
                     </Link>
                 ) : (
                     <div className={styles.taskHeader}>{title}</div>
