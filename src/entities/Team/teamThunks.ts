@@ -26,8 +26,6 @@ export const getTeamInfoThunk = createAsyncThunk<
     }
 });
 
-console.log('');
-
 export const editTeamThunk = createAsyncThunk<
     Team,
     string,

@@ -5,7 +5,7 @@ import {
     getTask,
     getTasks,
     sendAnswer,
-    sendFileAnswer,
+    sendAnswerFile,
 } from 'src/shared/api/ApiCalls.ts';
 import {BackendError} from 'src/app/types/global.ts';
 import {getErrorMessage} from 'src/shared/utils/api';
@@ -67,16 +67,13 @@ export const getTaskByIdThunk = createAsyncThunk<
 
 export const sendAnswerFileThunk = createAsyncThunk<
     any,
-    {data: FormData; id: number},
+    FormData,
     {rejectValue: string}
 >(
     'tasks/sendAnswerFileThunk',
-    async ({data, id}, {rejectWithValue, dispatch}) => {
+    async (data: FormData, {rejectWithValue, dispatch}) => {
         try {
-            const res = await sendFileAnswer({
-                file: data,
-                taskId: id,
-            });
+            const res = await sendAnswerFile(data);
 
             if (res.data.message === 'Задание выполнено.') {
                 dispatch(incrementUserBalance(res.data.points));

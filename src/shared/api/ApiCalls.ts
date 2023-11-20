@@ -100,8 +100,13 @@ export const getUsersRating = (type: string) =>
 export const sendAnswer = (data: {answer: string; taskId: number}) =>
     axios.post(createApiCall('/tasks/check'), data, getUserTokenHeader());
 
-export const sendFileAnswer = (data: {file: FormData; taskId: number}) =>
-    axios.post(createApiCall('/tasks/check/file'), data, getUserTokenHeader());
+export const sendAnswerFile = (data: FormData) =>
+    axios.post(createApiCall('/tasks/check/file'), data, {
+        headers: {
+            Authorization: `Bearer ${getToken()}`,
+            'Content-type': 'multipart/form-data',
+        },
+    });
 
 export const getTask = (id: number) =>
     axios.get(createApiCall(`/tasks/get/${id}`), getUserTokenHeader());

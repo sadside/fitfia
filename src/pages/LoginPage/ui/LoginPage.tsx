@@ -62,10 +62,6 @@ export const LoginPage: FC<RegisterPageProps> = ({}) => {
                                 className={styles.authLoginSquare}
                                 {...register('email', {
                                     required: 'Почту забыл... ',
-                                    // pattern: {
-                                    //     value: /[a-zA-Z][^\s]*@g\.nsu\.ru/,
-                                    //     message: 'Укажи почту от аккаунта НГУ',
-                                    // },
                                 })}
                             />
                             {errors?.email && (

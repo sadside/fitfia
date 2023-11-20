@@ -8,7 +8,11 @@ import {
 } from 'src/entities/Task/taskThunks.ts';
 import {Loader} from 'src/shared/ui/Loader';
 import {toast} from 'react-toastify';
-import {ANSWER_TYPES, TASK_STATUSES} from 'src/entities/Task/taskModel.ts';
+import {
+    ANSWER_STATUSES,
+    ANSWER_TYPES,
+    TASK_STATUSES,
+} from 'src/entities/Task/taskModel.ts';
 import {useNavigate} from 'react-router-dom';
 import FormattedMessage from 'src/shared/ui/formatted-message/FormattedMessage.tsx';
 import {AnimatePresence, motion} from 'framer-motion';
@@ -54,21 +58,18 @@ export const TaskPage: FC<TaskPageProps> = ({}: TaskPageProps) => {
                 setTimer(false);
             }, 5000);
 
-            if (task?.answerType === ANSWER_TYPES.MANUAL) {
-                if (selectedFile && task) {
+            if (task?.answerType === ANSWER_TYPES.FILE) {
+                if (selectedFile && task.taskInfo.id) {
                     const data = new FormData();
-                    data.append('file', selectedFile);
 
-                    dispatch(
-                        sendAnswerFileThunk({data: data, id: task.taskInfo.id})
-                    ).then(() => {
-                        if (!showed) {
-                            toast.info(
-                                'Дабы избежать подбора ответов, форма будет блокироваться на 5 сек после отправки. Удачного брутфорса)'
-                            );
-                            setShowed(true);
-                        }
-                    });
+                    try {
+                        data.append('file', selectedFile);
+                        data.append('taskId', task.taskInfo.id.toString());
+                        dispatch(sendAnswerFileThunk(data));
+                    } catch (e) {
+                        toast.error('Ошибка при загрузке файла');
+                        return;
+                    }
                 } else {
                     toast.error('Загрузи файл');
                 }
@@ -134,77 +135,102 @@ export const TaskPage: FC<TaskPageProps> = ({}: TaskPageProps) => {
                             })}
                         </div>
                         <hr />
-                        {task.taskInfo.status !== TASK_STATUSES.COMPLETED && (
-                            <div className={styles.price}>
-                                Награда за выполнение:{' '}
-                                <span className={styles.priceValue}>
-                                    {task?.taskInfo.potentialPoints}
-                                </span>
+                        {task?.answerStatus ===
+                        ANSWER_STATUSES.SENT_TO_CHECK ? (
+                            <div className={styles.done}>
+                                Задание отправлено на проверку!
                             </div>
-                        )}
-                        <AnimatePresence>
-                            {task.taskInfo.status ===
-                                TASK_STATUSES.COMPLETED && (
-                                <motion.div
-                                    initial={{opacity: 0}}
-                                    animate={{opacity: 1}}
-                                    exit={{opacity: 0}}
-                                    transition={{duration: 0.4, delay: 0.2}}
-                                    className={styles.done}>
-                                    Задание выполнено ✅
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-
-                        {task.taskInfo.status === TASK_STATUSES.AVAILABLE && (
-                            <div className={styles.cunt}>
-                                <div className={styles.answTxt}>Ответ:</div>
-
-                                {task.answerType === ANSWER_TYPES.MANUAL ? (
-                                    <>
-                                        <label className={styles.uploadFile}>
-                                            <input
-                                                type="file"
-                                                multiple={false}
-                                                onChange={handleChange}
-                                            />
-                                            Загрузить файл
-                                        </label>
-                                        <div className={styles.uploadedFile}>
-                                            {selectedFile
-                                                ? selectedFile.name
-                                                : 'Грузи, не очкуй!'}
-                                        </div>
-                                    </>
-                                ) : (
-                                    <input
-                                        className={styles.answer}
-                                        disabled={timer}
-                                        onChange={(
-                                            e: ChangeEvent<HTMLInputElement>
-                                        ) => setAnswer(e.target.value)}
-                                        value={answer}
-                                    />
+                        ) : (
+                            <div>
+                                {task.taskInfo.status !==
+                                    TASK_STATUSES.COMPLETED && (
+                                    <div className={styles.price}>
+                                        Награда за выполнение:{' '}
+                                        <span className={styles.priceValue}>
+                                            {task?.taskInfo.potentialPoints}
+                                        </span>
+                                    </div>
                                 )}
                                 <AnimatePresence>
-                                    {(selectedFile || answer) && (
-                                        <motion.button
-                                            type="submit"
-                                            className={styles.answerButt}
-                                            onClick={handleSubmit}
-                                            initial={{
-                                                opacity: 0,
-                                                y: 10,
-                                            }}
-                                            animate={{opacity: 1, y: 0}}
-                                            exit={{opacity: 0, y: 10}}
+                                    {task.taskInfo.status ===
+                                        TASK_STATUSES.COMPLETED && (
+                                        <motion.div
+                                            initial={{opacity: 0}}
+                                            animate={{opacity: 1}}
+                                            exit={{opacity: 0}}
                                             transition={{
-                                                duration: 0.3,
-                                            }}>
-                                            Отправить
-                                        </motion.button>
+                                                duration: 0.4,
+                                                delay: 0.2,
+                                            }}
+                                            className={styles.done}>
+                                            Задание выполнено ✅
+                                        </motion.div>
                                     )}
                                 </AnimatePresence>
+
+                                {task.taskInfo.status ===
+                                    TASK_STATUSES.AVAILABLE && (
+                                    <div className={styles.cunt}>
+                                        <div className={styles.answTxt}>
+                                            Ответ:
+                                        </div>
+
+                                        {task.answerType ===
+                                        ANSWER_TYPES.FILE ? (
+                                            <>
+                                                <label
+                                                    className={
+                                                        styles.uploadFile
+                                                    }>
+                                                    <input
+                                                        type="file"
+                                                        multiple={false}
+                                                        onChange={handleChange}
+                                                    />
+                                                    Загрузить файл
+                                                </label>
+                                                <div
+                                                    className={
+                                                        styles.uploadedFile
+                                                    }>
+                                                    {selectedFile
+                                                        ? selectedFile.name
+                                                        : 'Грузи, не очкуй!'}
+                                                </div>
+                                            </>
+                                        ) : (
+                                            <input
+                                                className={styles.answer}
+                                                disabled={timer}
+                                                onChange={(
+                                                    e: ChangeEvent<HTMLInputElement>
+                                                ) => setAnswer(e.target.value)}
+                                                value={answer}
+                                            />
+                                        )}
+                                        <AnimatePresence>
+                                            {(selectedFile || answer) && (
+                                                <motion.button
+                                                    type="submit"
+                                                    className={
+                                                        styles.answerButt
+                                                    }
+                                                    onClick={handleSubmit}
+                                                    initial={{
+                                                        opacity: 0,
+                                                        y: 10,
+                                                    }}
+                                                    animate={{opacity: 1, y: 0}}
+                                                    exit={{opacity: 0, y: 10}}
+                                                    transition={{
+                                                        duration: 0.3,
+                                                    }}>
+                                                    Отправить
+                                                </motion.button>
+                                            )}
+                                        </AnimatePresence>
+                                    </div>
+                                )}
                             </div>
                         )}
                     </div>

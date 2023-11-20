@@ -113,6 +113,11 @@ const tasksSlice = createSlice({
         });
         builder.addCase(sendAnswerFileThunk.fulfilled, (state, action) => {
             state.status = 'idle';
+            if (action.payload.message === 'Отправлено на проверку.') {
+                if (state.fullTask)
+                    state.fullTask.taskInfo.status =
+                        TASK_STATUSES.SENT_TO_CHECK;
+            }
             if (action.payload.message === 'Задание выполнено.') {
                 toast.success(action.payload.message);
                 if (state.fullTask) {

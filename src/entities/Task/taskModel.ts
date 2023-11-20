@@ -41,12 +41,14 @@ export enum ANSWER_TYPES {
     MANUAL = 'MANUAL',
     MULTIPLE_ANSWERS = 'MULTIPLE_ANSWERS',
     DECREASING = 'DECREASING',
+    FILE = 'FILE',
 }
 
 export enum TASK_STATUSES {
     LOCKED = 'LOCKED',
     AVAILABLE = 'AVAILABLE',
     COMPLETED = 'COMPLETED',
+    SENT_TO_CHECK = 'SENT_TO_CHECK',
 }
 
 export type FullTask = {

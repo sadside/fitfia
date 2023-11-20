@@ -29,6 +29,20 @@
         cursor: text !important;
     }
 }
+
+.taskSented {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "PT Mono", 'serif';
+    font-size: 22px;
+    height: 120px;
+    border-radius: 11px;
+    border: 1px solid #FFC700;
+    margin-top: 20px;
+}
+
 .description{
     width: 98%;
     overflow-wrap: break-word !important;
@@ -139,10 +153,19 @@ hr {
     font-size: 24px;
 }
 
+.uploadedFile {
+    font-family: "PT Mono";
+    margin-left: 20px;
+}
+
 .uploadFile {
     height: 55px;
     cursor: pointer;
     display: flex;
+    font-family: "PT Mono";
+    * {
+        font-family: "PT Mono";
+    }
     border-radius: 11px;
     align-items: center;
     justify-content: center;

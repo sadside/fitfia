@@ -2,7 +2,6 @@ import {Suspense} from 'react';
 import {Route, Routes} from 'react-router-dom';
 import {TaskPage} from 'src/pages/TaskPage';
 import {TasksPage} from 'src/pages/TasksPage/ui/TasksPage.tsx';
-// import {Layout} from 'src/app/layout/ui/Layout.tsx';
 import {RegisterPage} from 'src/pages/RegisterPage';
 import {LoginPage} from 'src/pages/LoginPage';
 import RequireAuth from 'src/app/providers/routerHocs/requireAuth/ui/RequireAuth.tsx';
@@ -12,10 +11,11 @@ import {ProfilePage} from 'src/pages/ProfilePage';
 import {RequireNotAuth} from 'src/app/providers/routerHocs/requireNotAuth';
 import {CreateTeamPage} from 'src/pages/createTeamPage';
 import {NewPage} from 'src/pages/newPage/ui/NewPage.tsx';
+import {Loader} from 'src/shared/ui/Loader';
 
 export const AppRouter = () => {
     return (
-        <Suspense fallback={<div></div>}>
+        <Suspense fallback={<Loader />}>
             <Routes>
                 <Route
                     path="/registration"

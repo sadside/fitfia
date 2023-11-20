@@ -36,7 +36,7 @@ export const NewsPage = () => {
                             />
                         ))
                     ) : (
-                        <div>asda</div>
+                        <div>Новостей нет!</div>
                     )}
                 </div>
             </div>
