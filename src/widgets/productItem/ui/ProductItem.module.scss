@@ -1,0 +1,42 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  border: 1px solid #FFC700;
+  border-radius: 11px;
+  margin: 20px;
+  padding: 10px;
+  background-color: #212121;
+  * {
+    font-family: 'PT Mono' !important;
+  }
+  button {
+    height: 40px;
+    width: 100px;
+    border: 1px solid #FFC700;
+    border-radius: 11px;
+    color: #fff;
+    background: none;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+    font-weight: bold;
+
+    &:hover {
+      background-color: #fff;
+      color: #FFC700;
+    }
+  }
+}
+
+.name, .price {
+  font-size: 18px;
+  color: #FFC700;
+  width: 400px;
+}
+
+.description {
+  color: #FFFFFF !important;
+  font-size: 16px !important;
+  margin-top: 5px;
+}

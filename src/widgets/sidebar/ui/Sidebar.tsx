@@ -37,6 +37,14 @@ export const Sidebar = ({}: SidebarProps) => {
                     </li>
                     <li className={styles.optionListItem}>
                         <NavLink
+                            to="/shop"
+                            onMouseEnter={play}
+                            className={setActive}>
+                            Магазин
+                        </NavLink>
+                    </li>
+                    <li className={styles.optionListItem}>
+                        <NavLink
                             to="/profile"
                             onMouseEnter={play}
                             className={setActive}>

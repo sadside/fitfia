@@ -168,5 +168,5 @@ export const loadUserStoreBalance = () =>
 export const loadStoreList = () =>
     axios.get(createApiCall('/shop/products'), getUserTokenHeader());
 
-export const buyProduct = (data: string) =>
+export const buyProduct = (data: {id: number}) =>
     axios.post(createApiCall('/shop/buy'), data, getUserTokenHeader());

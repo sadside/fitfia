@@ -6,6 +6,7 @@ import tasksReducer from 'src/entities/Task/taskSLice.ts';
 import ratingReducer from 'src/entities/Rating/ratingSlice.ts';
 import newsReducer from 'src/entities/News/newsSlice.ts';
 import stageReducer from 'src/entities/Stage/stageSlice.ts';
+import productsReducer from 'src/entities/Products/productsSlice.ts';
 
 const rootReducer = combineReducers({
     sidebar: sidebarReducer,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
     rating: ratingReducer,
     news: newsReducer,
     stage: stageReducer,
+    products: productsReducer,
 });
 
 export default rootReducer;
